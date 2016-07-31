@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hover Text</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"
+          integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        min-height: 100vh;
+        width: 100%;
+      }
+
+      .grid {
+        margin: 100px 0;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .column-1 {
+        flex: 1 0;
+        position: relative;
+      }
+
+      .column-1:hover .invisible-layout {
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .invisible-layout {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+      }
+
+      .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        background-color: yellow;
+        opacity: 0.5;
+      }
+
+      .img {
+        width: 100%;
+        height: 300px;
+      }
+
+      h3 {
+        color: black;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div class="grid">
+      <div class="column-1">
+        <div class="invisible-layout">
+          <div class="content">
+            <h3>I'm a pair of shoes!</h3>
+          </div>
+        </div>
+        <img src="kicks.jpeg" alt="" / class="img">
+      </div>
+      <div class="column-1">
+        <div class="invisible-layout">
+          <div class="content">
+            <h3>I'm a pineapple!</h3>
+          </div>
+        </div>
+        <img src="pineapple.jpeg" alt="" / class="img">
+      </div>
+      <div class="column-1">
+        <div class="invisible-layout">
+          <div class="content">
+            <h3>I'm a watch!</h3>
+          </div>
+        </div>
+        <img src="applewatch.jpeg" alt="" / class="img">
+      </div>
+      <div class="column-1">
+        <div class="invisible-layout">
+          <div class="content">
+            <h3>I'm a white rose!</h3>
+          </div>
+        </div>
+        <img src="whiterose.jpeg" alt="" / class="img">
+      </div>
+    </div>
+  </body>
+</html>
