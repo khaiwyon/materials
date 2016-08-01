@@ -77,6 +77,9 @@ in the same folder and have a look at it.
 
 - ```background-image``` is the css command to render an image as a background
 
+- IMPORTANT: You need to change ```url``` inside background-image to ```asset-url``` for rails. This is a rails helper method for
+determining where the ```image``` folder is.
+
 - ```height ``` is the css setting to set the height of the element. In this case, it is the ```div ```
 containing the background image. height can take the values of percentage, pixels of vh - which is view-height
 view-height can go from the value 0 to 100 - 100 being the image or element rendered as large as the size of the screen.
@@ -117,3 +120,6 @@ aligns the only element into the center.
 
 - Daily Challenge: Now that we've created the full page photo, let's create another one below it. Refer to the sample landing page,
 find another photo and set the height to ``` 50 vh ```. Add the text ``` Created for Cool People ```.
+
+- HINT: You can also use ```background-color ``` instead of an image. Background colours can accept hex colours on top of english names.
+Give it a try, google ```hex color``` and play around with the palettes before adding it into your css file.
