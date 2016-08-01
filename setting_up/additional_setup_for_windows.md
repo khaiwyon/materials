@@ -1,4 +1,4 @@
-# Setting up for Windows
+# Additional Set up for Windows
 
 There are additional configurations for windows:
 
@@ -16,3 +16,5 @@ There are additional configurations for windows:
 
 - Configure your ```database.yml``` in your new rails app folder, under ``` development ``` and ``` test ```, add ```username: postgres ```
 and ```password: <the-password-you-set> ```
+
+- Finally, proceed to [NodeJs](https://nodejs.org/en/) website and downloaded the most current NodeJS version and install.

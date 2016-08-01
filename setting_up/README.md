@@ -1,6 +1,4 @@
-# Full Stack Web Development Materials
-
-## Setting up your first Rails Project
+# Setting up your first Rails Project
 
 - Start by typing ``` rails new -T your-app-name --database=postgresql ```
 
