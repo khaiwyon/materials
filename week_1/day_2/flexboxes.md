@@ -15,6 +15,8 @@ are a layout mode in css that allows you to structure your elements.
     gem "font-awesome-rails"
   ```
 
+- HINT: You can look for more icons [here](http://fontawesome.io/icons/)
+
 - Don't forget to run ```bundle install ```
 
 - Once done, add the following into your `application.css` file
