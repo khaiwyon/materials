@@ -83,7 +83,6 @@ your `application.js` and add the following below `//= require jquery_ujs`
   ```
   .navbar {
     margin-bottom: 0;
-    height: 52px;
   }
   ```
 
