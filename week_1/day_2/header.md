@@ -58,7 +58,7 @@ your `application.js` and add the following below `//= require jquery_ujs`
 
 - First, let's rename your `application.css` file into `application.scss` file.
 
-- Add the following into it:
+- Remove everything in it and add the following:
 
   ```
   @import "bootstrap-sprockets";
