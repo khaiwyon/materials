@@ -12,7 +12,7 @@
 
   ```
   .short-underline {
-    width: 20px;
+    width: 50px;
     border-bottom: 2px solid orange;
   }
   ```
