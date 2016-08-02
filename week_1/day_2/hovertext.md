@@ -25,18 +25,19 @@ and `hovertext.html` to help you.
       height: 100%;
       width: 100%;
       opacity: 0;
-    }
-
-    .content {
+      
+      .content {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
       background-color: yellow;
       opacity: 0.5;
+      }
     }
+
   ```
-  
+
 - After that, add `position: relative ` to `<your-class-name>`
 
 - When you're done, you can add the following html into your flex elements:
