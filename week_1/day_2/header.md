@@ -81,6 +81,11 @@ your `application.js` and add the following below `//= require jquery_ujs`
 - Finally, create `header.scss` inside your `stylesheets/views` folder and add the following:
 
   ```
+  #header {
+    height: 52px;
+    z-index: 1;
+  }
+
   .navbar {
     margin-bottom: 0;
   }
