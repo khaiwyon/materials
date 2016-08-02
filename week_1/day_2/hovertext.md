@@ -25,6 +25,7 @@ and `hovertext.html` to help you.
       display: flex;
       justify-content: center;
       background-color: yellow;
+      align-items: center;
     }
 
   ```
