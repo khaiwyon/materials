@@ -36,8 +36,9 @@ and `hovertext.html` to help you.
       opacity: 0.5;
     }
   ```
+- After that, add `position: relative ` to `<your-class-name>`
 
-- Once completed, you can add the following html into your flex elements:
+- When you're done, you can add the following html into your flex elements:
 
   ```
   <div class="invisible-layout">
