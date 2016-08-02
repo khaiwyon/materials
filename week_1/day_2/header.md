@@ -37,6 +37,16 @@
 
 and paste it into the `_header.html.erb` file.
 
+- Once you've created your `header` partial, go ahead and type the following into your `application.html.erb`.
+
+  ```
+  <div id="header">
+    <%= render partial: 'partials/header' %>
+  </div>
+  ```
+
+above `<%= yield %>` inside your `body` tag.
+
 - Now we'll need to make some pretty big adjustments to your stylesheets.
 
 - But, before that, let's add some bootstrap javascript files into your rails application. Open
@@ -93,4 +103,4 @@ height of the header to ensure that the photo still fits the full page verticall
 
 - Finally, try out the responsive view by dragging and shrinking your browser size, see what changes.
 
-- Challenge, try making canges to your header, set a different background color, change the font-size and colors, change the height. Play around.
+- Challenge, try making changes to your header, set a different background color, change the font-size and colors, change the height. Play around.
