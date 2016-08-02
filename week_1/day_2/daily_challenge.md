@@ -13,6 +13,6 @@
   ```
   .short-underline {
     width: 20px;
-    border: 2px solid orange;
+    border-bottom: 2px solid orange;
   }
   ```
