@@ -97,4 +97,4 @@ your discussion board is all about.
 
 - Use icons to tell the story. Add a few more that links specifically to your social networks.
 
-- HINT: use `link_to ... do` to add an icon to your links. Refer to the documenation for more ideas.
+- HINT: use `link_to ... do` to add an icon to your links. Refer to the documentation for more ideas.
