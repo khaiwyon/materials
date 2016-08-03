@@ -50,3 +50,7 @@
   ![topic routes](images/topics_routes.png)
 
 - For more information, read up [here](http://guides.rubyonrails.org/routing.html#resources-on-the-web)
+
+### Further Reading
+
+[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
