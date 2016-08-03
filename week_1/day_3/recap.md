@@ -72,6 +72,17 @@ and remove the following code:
   <li><%= link_to "About", about_path %></li>
   ```
 
+- Now remove the following code:
+  ```
+  <a class="navbar-brand" href="#">MagicForums</a>
+  ```
+
+- Replace it with:
+
+  ```
+  <%= link_to "MagicForums", root_path, class: "navbar-brand" %>
+  ```
+
 - Find out more about `link_to` [here](http://apidock.com/rails/v3.2.8/ActionView/Helpers/UrlHelper/link_to)
 
 #### Criteria for your about page:
