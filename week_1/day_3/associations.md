@@ -39,7 +39,7 @@ that lets your application know which post this comment belongs to - using ids.
 
 ### Challenge
 
-- Create another model called `Topic` that has 2 attributes - `title` that is a `string` and `description` that is a `text`. Once you've created it, associated the following:
+- Create another model called `Topic` that has 2 attributes - `title` that is a `string` and `description` that is a `text`. Once you've created it, create associations for the following:
 
 - `Topic` have many `Posts`. `Post` belongs to `Topic`.
 
