@@ -33,3 +33,8 @@
 - The link should still be broken so let's fix that in a while.
 
 - For now, try adding new topics in your `rails console` and refresh your page.
+
+FURTHER READING
+
+- [Each method](http://ruby-doc.org/core-2.2.0/Array.html#method-i-each)
+- [Embedded Ruby](https://en.wikipedia.org/wiki/ERuby)
