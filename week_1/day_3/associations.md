@@ -44,3 +44,7 @@ that lets your application know which post this comment belongs to - using ids.
 - `Topic` have many `Posts`. `Post` belongs to `Topic`.
 
 - Be sure to create the foreign key `topic_id` for posts.
+
+READING MATERIALS:
+
+[Associations](http://guides.rubyonrails.org/association_basics.html)
