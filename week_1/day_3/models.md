@@ -41,7 +41,7 @@ and database schema called comments, that has one text attribute called body.
 
 - You should see a newly created table called `comments` in there after running your migrations.
 
-- Note: Rails automaticaly adds the `id`, `created_at`, and `updated_at` fields as well.
+- Note: Rails automatically adds the `id`, `created_at`, and `updated_at` fields as well.
 
 ### Challenge
 
@@ -53,3 +53,4 @@ and database schema called comments, that has one text attribute called body.
 EXTRA READING:
 
 [Rails Generate](http://guides.rubyonrails.org/command_line.html#rails-generate)
+[Postgres DataTypes](http://stackoverflow.com/questions/17918117/rails-4-list-of-available-datatypes)
