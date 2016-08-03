@@ -11,8 +11,9 @@
 
   <% @topics.each do |topic| %>
     <div class="topic">
-      <h3><%= @topic.title %></h3>
-      <%= link_to @topic.title, topic_path(@topic) %>
+      <h3><%= topic.title %></h3>
+      <h5><%= topic.description %></h5>
+      <%= link_to topic.title, topic_path(topic) %>
     </div>
   <% end %>
   ```
