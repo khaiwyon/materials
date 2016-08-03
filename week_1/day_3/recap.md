@@ -45,7 +45,7 @@ called `.landing`. Example:
   }
   ```
 
-- Do the same for your `landing.html.erb`
+- Do the same for your `index.html.erb`
 
   ```
   <div class="landing">
