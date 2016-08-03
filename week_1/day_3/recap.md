@@ -85,6 +85,9 @@ and remove the following code:
 
 - Find out more about `link_to` [here](http://apidock.com/rails/v3.2.8/ActionView/Helpers/UrlHelper/link_to)
 
+- HINT: If you'd like to know about your available paths, run `rails s` and go to a random url on your localhost. It will break and you will be able to see a list of routes. Optionally,
+you can also run `rails routes` on your terminal to view the list of routes.
+
 #### Criteria for your about page:
 
 - It should contain a full page photo, with a text in the center detailing what
