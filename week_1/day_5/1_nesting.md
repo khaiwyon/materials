@@ -65,6 +65,7 @@
 
     def edit
       @post = Post.find_by(id: params[:id])
+      @topic = @post.topic
     end
 
     def update
@@ -80,6 +81,7 @@
 
     def destroy
       @post = Post.find_by(id: params[:id])
+      @topic = @post.topic
 
       if @post.destroy
         redirect_to topic_posts_path(@topic)
