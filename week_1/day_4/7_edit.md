@@ -2,7 +2,7 @@
 
 - Now that you've learnt how to create topics, let's learn how to update them.
 
-- First, add an `edit` button on your `show.html.erb`, passing the parameter `@topic` as the id. (I'm fairly certain you're a pro by now)
+- First, add an `edit` button on your `index.html.erb` for each `topic`, passing the parameter `topic` as the id.
 
 - We'll need to create a new page called `edit.html.erb` on your `views/topics` folder. Paste the following form into it:
 
