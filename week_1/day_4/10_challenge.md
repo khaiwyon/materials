@@ -8,7 +8,7 @@
 
 - Using what you've learnt with today, build the same thing for `posts`.
 
-NOTE: Temporarily for this challenge. Modify this on your `Post` model to add `optiona: true` to `belongs_to :topic`
+NOTE: Temporarily for this challenge. Modify this on your `Post` model to add `optional: true` to `belongs_to :topic`
 
 ```
   class Post < ApplicationRecord
