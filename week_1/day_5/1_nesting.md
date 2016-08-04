@@ -2,6 +2,8 @@
 
 ## Nesting Resources
 
+- First let's remove `optional: true` from the `Post model`.
+
 - Now, we're going to add structure to our application.
 
 - As you've learnt, we've created `topics`, and we've created `posts`.
