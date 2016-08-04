@@ -28,3 +28,7 @@
   ```
 
 - You should now be able to fetch specific topics from your database.
+
+### FURTHER READING
+
+[Params](http://guides.rubyonrails.org/action_controller_overview.html#hash-and-array-parameters)
