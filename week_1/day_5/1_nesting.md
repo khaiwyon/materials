@@ -96,3 +96,9 @@
 
 - As mentioned, since we've nested posts under topics, we can now scope to show only posts relevant to the topic we've selected.
   Because of that, our posts controller now also require us searching for a specific topic.
+
+- Example:
+
+- Instead of `<%= link_to "Show", post_path(@post) %>`, it is now `<%= link_to "Show", topic_post_path(@topic, @post) %>`
+
+- Similarly, for your forms. It is now `<%= form_for(@post, topic_post_path(@topic, @post) ... %>)`
