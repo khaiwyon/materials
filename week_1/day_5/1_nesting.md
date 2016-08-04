@@ -28,12 +28,12 @@
 
 - Notice that your urls are now "/topics/*/posts"
 
-- This is to allow scoping as each individual topics will have their own posts.
+- This is to allow scoping since individual topics will have their own posts.
 
 - On top of just passing our post's `id`, we now have to pass in a new parameter called
 `topic_id` when dealing with `posts`.
 
-- We now have quite a bit of refactoring to do for our `posts` and `topics` controllers.
+- Time to do a bit of refactoring for our `posts` and `topics` controllers.
 
 - First and foremost, let's remove the `show` method and views from both controllers.
 
@@ -96,12 +96,12 @@
   end
   ```
 
-- `.include(:posts)` is a `eager loading` method. This is usually used when we need to eagerly load an associated table on top of the original table.
-This allows faster querying when you eventually need to retrieve a record's associated records. For example, when you need to fetch all `posts` of a `topic`. 
+- `.include(:posts)` is an `eager loading` method. This is usually used when we need to load an associated table on top of the original table.
+This allows faster querying when you eventually need to retrieve a record's associations. For example, when you need to fetch all `posts` of a `topic`.
 
-- As mentioned, since we've nested posts under topics, we can now scope to show only posts relevant to the topic we've selected.
+- As mentioned, since we've nested posts under topics, we can now scope to show posts relevant to the topic we've selected.
 
-- Because of this, we have to pass the `topic` id into all our `link_to` and `form_for` paths as well.
+- Because of this, we have to pass `topic` into all our `link_to` and `form_for` paths as well.
 
 - For example, instead of `<%= link_to "Show", post_path(@post) %>`, it is now `<%= link_to "Show", topic_post_path(@topic, @post) %>`
 
