@@ -98,8 +98,14 @@
 
 - Because of this, we have to pass the `topic` id into our `urls` well.
 
-- EXAMPLE:
-
-- Instead of `<%= link_to "Show", post_path(@post) %>`, it is now `<%= link_to "Show", topic_post_path(@topic, @post) %>`
+- For example, instead of `<%= link_to "Show", post_path(@post) %>`, it is now `<%= link_to "Show", topic_post_path(@topic, @post) %>`
 
 - Similarly, for your forms. It is now `<%= form_for(@post, topic_post_path(@topic, @post) ... %>)`
+
+- One final thing, replace the `show` link for `topics` to the posts `index` instead.
+
+- For example:
+
+- Instead of `<%= link_to topic.title, topic_path(topic) %>`, use `<%= link_to topic.title, topic_posts_path(topic) %>`.
+
+- This is to ensure we show the index of `posts` of the selected `topic` instead of showing the `topic` itself.
