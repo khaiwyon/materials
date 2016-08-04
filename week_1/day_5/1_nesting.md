@@ -96,7 +96,7 @@
 
 - As mentioned, since we've nested posts under topics, we can now scope to show only posts relevant to the topic we've selected.
 
-- Because of this, we have to pass the `topic` id into our `urls` well.
+- Because of this, we have to pass the `topic` id into all our `link_to` and `form_for` paths as well.
 
 - For example, instead of `<%= link_to "Show", post_path(@post) %>`, it is now `<%= link_to "Show", topic_post_path(@topic, @post) %>`
 
