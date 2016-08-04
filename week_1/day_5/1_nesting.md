@@ -111,3 +111,8 @@
 - Instead of `<%= link_to topic.title, topic_path(topic) %>`, use `<%= link_to topic.title, topic_posts_path(topic) %>`.
 
 - This is to ensure we show the index of `posts` of the selected `topic` instead of showing the `topic` itself.
+
+HINT:
+
+- If you remember associations, another trick you can use is to do `@topic = @post.topic` instead of finding it via `params[:topic_id]`.
+Note that this will not work if you do not have a `@post` record to begin with.
