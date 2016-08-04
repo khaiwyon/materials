@@ -7,7 +7,7 @@
 - There are some minor differences:
 
   ```
-    <%= link_to "Delete", topic_path(@topic), method: :delete %>
+    <%= link_to "Delete", topic_path(@topic), method: :delete, data: { confirm: "Delete?" } %>
   ```
 
 - the `delete` method is explicitly passed along because by default, link methods are `get` (REFER to CRUD again)
