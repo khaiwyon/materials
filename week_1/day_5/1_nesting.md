@@ -96,7 +96,7 @@
   end
   ```
 
-- `.include(:posts)` is an `eager loading` method. This is usually used when we need to load an associated table on top of the original table.
+- `.includes(:posts)` is an `eager loading` method. This is usually used when we need to load an associated table on top of the original table.
 This allows faster querying when you eventually need to retrieve a record's associations. For example, when you need to fetch all `posts` of a `topic`.
 
 - As mentioned, since we've nested posts under topics, we can now scope to show posts relevant to the topic we've selected.
