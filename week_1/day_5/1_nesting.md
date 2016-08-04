@@ -48,7 +48,7 @@
     end
 
     def new
-      @topic = Topic.find_by(id: params[:id])
+      @topic = Topic.find_by(id: params[:topic_id])
       @post = Post.new
     end
 
