@@ -96,6 +96,9 @@
   end
   ```
 
+- `.include(:posts)` is a `eager loading` method. This is usually used when we need to eagerly load an associated table on top of the original table.
+This allows faster querying when you eventually need to retrieve a record's associated records. For example, when you need to fetch all `posts` of a `topic`. 
+
 - As mentioned, since we've nested posts under topics, we can now scope to show only posts relevant to the topic we've selected.
 
 - Because of this, we have to pass the `topic` id into all our `link_to` and `form_for` paths as well.
