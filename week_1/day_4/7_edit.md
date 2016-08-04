@@ -4,6 +4,17 @@
 
 - First, add an `edit` button on your `index.html.erb` for each `topic`, passing the parameter `topic` as the id.
 
+- In your `TopicsController`, add the following code into your `edit` method.
+
+  ```
+  class TopicsController < ApplicationController
+
+    def edit
+      @topic = Topic.find_by(id: params[:id])
+    end
+  end
+  ```
+
 - We'll need to create a new page called `edit.html.erb` on your `views/topics` folder. Paste the following form into it:
 
   ```
