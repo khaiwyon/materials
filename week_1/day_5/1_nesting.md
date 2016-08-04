@@ -103,7 +103,7 @@ This allows faster querying when you eventually need to retrieve a record's asso
 
 - Because of this, we have to pass `topic` into all our `link_to` and `form_for` paths as well.
 
-- For example, instead of `<%= link_to "Show", post_path(@post) %>`, it is now `<%= link_to "Show", topic_post_path(@topic, @post) %>`
+- For example, instead of `<%= link_to "New Post", new_post_path %>`, it is now `<%= link_to "New Post", new_topic_post_path(@topic) %>`
 
 - Similarly, for your forms. It is now `<%= form_for(@post, topic_post_path(@topic, @post) ... %>)`
 
