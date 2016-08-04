@@ -53,3 +53,7 @@
 - Fill in your form and hit submit, `pry` should fire again in your terminal. Type `params` and you should be able to see the data that have been sent from your form.
 
 - Finally, let's add a new button to your topics index page. Give it a try.
+
+### FURTHER READING:
+
+[Forms Generator](http://guides.rubyonrails.org/form_helpers.html)
