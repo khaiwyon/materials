@@ -39,3 +39,4 @@ FURTHER READING
 
 - [Each method](http://ruby-doc.org/core-2.2.0/Array.html#method-i-each)
 - [Embedded Ruby](https://en.wikipedia.org/wiki/ERuby)
+- [Ordering your records](http://guides.rubyonrails.org/active_record_querying.html#ordering)
