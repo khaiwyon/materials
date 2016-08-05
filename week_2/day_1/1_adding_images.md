@@ -184,7 +184,7 @@ the image previewer.
 
 - Copy it to somewhere safe, we're going to need it soon.
 
-- Now let's install '[figaro](https://github.com/laserlemon/figaro)' gem. (Don't forget to `bundle`)
+- Now let's install '[figaro](https://github.com/laserlemon/figaro)' gem and `[fog](https://github.com/fog/fog)`. (Don't forget to `bundle`)
 
 - Figaro allows you to manage your environment variables without revealing it to other users (since most of these keys have to be secure).
 
