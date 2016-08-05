@@ -105,7 +105,7 @@ This allows faster querying when you eventually need to retrieve a record's asso
 
 - For example, instead of `<%= link_to "New Post", new_post_path %>`, it is now `<%= link_to "New Post", new_topic_post_path(@topic) %>`
 
-- Similarly, for your forms. It is now `<%= form_for(@post, topic_post_path(@topic, @post) ... %>)`
+- Similarly, for your forms. It is now `<%= form_for(@post, url: topic_post_path(@topic, @post) ... %>)`
 
 - One final thing, replace the `show` link for `topics` to the posts `index` instead.
 

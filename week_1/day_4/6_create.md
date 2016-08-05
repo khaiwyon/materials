@@ -38,7 +38,7 @@
       if @topic.save
         redirect_to topics_path
       else
-        render new_topic_path
+        redirect_to new_topic_path
       end
     end
   end
