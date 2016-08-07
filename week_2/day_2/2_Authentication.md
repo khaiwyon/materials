@@ -52,6 +52,11 @@ the `salt` key and compares it to make sure the two are the same. In summary, yo
   end
   ```
 
+- The `new` action is your login page, where there would be a form for your user to key in their credentials. `Create` is the action that finds your user using `email` in the database,
+authenticates them by comparing their password with the hash and saving their id in a session if a match is found.
+
+- `Destroy` is to remove the `id` session, thus logging the user out.
+
 - Create a new `resource` in your routes that only has `new`, `create`, and `destroy`
 
 - Next, we're going to add a new `method` in your `applicaton_controller.rb`
