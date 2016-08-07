@@ -157,6 +157,8 @@ processed by the `ImageUploader` from `Carrierwave's` library.
 - With this done, your challenge is to add the same of comments and posts forms (new and edit). Note that your `new` form may not need
 the image previewer.
 
+- One final tweak, we'll need to allow `:image` to be permitted as a parameters now in your controllers so add them appropriately into your `strong params` for `posts and `comments`.
+
 ## BONUS: Image Uploading in Production
 
 - WARNING: You will need a credit card for this part.
