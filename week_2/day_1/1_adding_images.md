@@ -154,8 +154,8 @@ processed by the `ImageUploader` from `Carrierwave's` library.
 
 - The second part (`file_field`) creates a html file field input where you will be able to upload your image into the database.
 
-- With this done, your challenge is to add the same of comments and posts forms (new and edit). Note that your `new` form may not need
-the image previewer.
+- With this done, your `challenge` is to add the same of comments and posts forms (new and edit). Note that your `new` form may not need
+the image previewer. Remember to also add it in other pages where you would need it, for example `posts index` and `comments index`
 
 - One final tweak, we'll need to allow `:image` to be permitted as a parameters now in your controllers so add them appropriately into your `strong params` for `posts and `comments`.
 
