@@ -4,6 +4,8 @@
 
 - We're going to learn a little CoffeeScript, CoffeeScript is a variant of Javascript. Simply put, coffeescript compiles into Javascript when run.
 
+- Create a new file called `image_previewer.coffee` and add the following code
+
 ```
   imagePreviewFunctions = () ->
     $('.image-uploader').on 'change', (event) ->
