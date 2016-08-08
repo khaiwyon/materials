@@ -12,7 +12,7 @@
 
 - Windows Users can download it from [here](http://www.imagemagick.org/script/binary-releases.php)
 
-- Next, we're going to add the `[carrierwave](https://github.com/carrierwaveuploader/carrierwave)` and `[mini_magick](https://github.com/minimagick/minimagick)` gem.
+- Next, we're going to add the [carrierwave](https://github.com/carrierwaveuploader/carrierwave) and [mini_magick](https://github.com/minimagick/minimagick) gem.
 Remember to `bundle install`. Windows users that are running into issues can use `gem 'mini_magick', '~> 3.5.0'` instead.
 
 - Now we're ready to generate our first image uploader. After bundling, in your terminal type `rails g uploader Image`. You should now see a new folder called `uploaders` and
