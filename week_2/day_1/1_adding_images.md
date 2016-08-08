@@ -136,14 +136,14 @@ processed by the `ImageUploader` from `Carrierwave's` library.
 - Now let's modify our `edit` form to allow image uploads, add the following code below inside your `form_for` block -
 
   ```
-  <% if @post.image? %>
     <div class="form-group">
       <h4 class="text-center"> Post Image </h4>
       <div id="preview-image">
-        <%= image_tag "graybox.jpg", class: "img-settings img-responsive center-block" %>
+        <% if @post.image? %>
+          <%= image_tag @post.image, class: "img-settings img-responsive center-block" %>
+        <% end %>
       </div>
     </div>
-  <% end %>
 
   <div class="form-group">
     <%= f.file_field :image, id: "post_image_field", class: 'form-control image-uploader' %>
