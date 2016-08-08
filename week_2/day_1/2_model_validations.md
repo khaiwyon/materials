@@ -51,7 +51,7 @@ and has to be present. Otherwise, Rails will reject it and you will run into an 
 
 - Next, we're going to render these error messages to your users. Remove `binding.pry`.
 
-- Let's create a new file called `flash_messages.html.erb` in your `views/partials` folder.
+- Let's create a new file called `_flash_messages.html.erb` in your `views/partials` folder.
 
 - Paste the following code into it:
 
@@ -105,13 +105,13 @@ and is cleared after that. On the styling of flash messages, check out [Bootstra
     }
 
     .alert-success {
-      background-color: $green;
+      background-color: green;
       color: $white;
     }
 
     .alert-danger {
-      background-color: $red;
-      color: $white;
+      background-color: red;
+      color: white;
     }
 
     .close {
