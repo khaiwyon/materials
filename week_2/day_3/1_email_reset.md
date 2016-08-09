@@ -91,7 +91,7 @@
 - `update` allows the user to set their new password. If a user is found and the criteria for `token_active` is met, it will allow the user to set
 their new password. `token_active?` is a method that checks to see if the `password_reset_at` has exceeded 24 hours or not.
 
-- Now let's create `new.html.erb` in `views/passwords`
+- Now let's create `new.html.erb` in `views/password_resets`
 
   ```
   <div class="password-resets new">
@@ -134,7 +134,7 @@ as the hash name instead of the object's name.
 
 - [Mailers](http://guides.rubyonrails.org/action_mailer_basics.html) are a `Rails` module that helps you with sending out emails.
 
-- We're next going to create another folder in `app/views` called `password_resets`
+- We're next going to create another folder in `app/views` called `password_resets_mailer`
 
 - Inside, create a new file called `password_reset_mail.html.erb`
 
@@ -146,4 +146,14 @@ as the hash name instead of the object's name.
 
     <p> Regards, </p>
     <p> Roti Telur Discussions </p>
+  ```
+
+- Note that the folder name `password_resets_mailer` follows the mailer's name (password_resets_mailer.rb).
+
+- Similarly, the email template is also named similarly to the method `password_reset_mail`
+
+- This is the naming convention for mailers.
+
+- With that done, let's create `edit.html.erb` in `views/password_resets`
+
   ```

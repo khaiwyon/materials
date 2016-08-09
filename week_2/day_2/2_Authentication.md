@@ -147,3 +147,5 @@ the app.
   ```
 
 - What this does is that it checks to see if there is a `current_user` (is a user logged in), then show the appropriate links (logout).
+
+- IMPORTANT: `:password_digest` is only used by `bcrypt`. You should use `:password` for everything else.
