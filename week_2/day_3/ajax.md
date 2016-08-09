@@ -2,6 +2,8 @@
 
 ## Going AJAX
 
+- WARNING: COPY PASTING AT THIS LESSON MAY NOT WORK BECAUSE YOUR APP MAY BE STYLED DIFFERENTLY, FOLLOW THE EXAMPLE AND CUSTOMIZE ACCORDING TO YOUR APP.
+
 - [Ajax](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started) is the acronym for "Asynchronous Javascript And XML". In simple terms,
 AJAX's greatest appeal is the ability to make a server-side call without refreshing the page itself.
 
@@ -29,9 +31,55 @@ from the `controller`.
 - For example:
 
   ```
-    <%= @comments.each do |comment| %>
-      <%= render partial: "comment", locals: { comment: comment } %>
-    <% end %>
+    <div id="comments">
+      <% @comments.each do |comment| %>
+        <%= render partial: "comment", locals: { comment: comment, post: @post } %>
+      <% end %>
+    </div>
   ```
 
 - `locals` is how we can pass variables into a partial.
+
+- Finally, we're going to create a `create.js.erb` file in your `views/comments/
+
+- A `js.erb` file is a `javascript file with embedded ruby`. This allows you to call both ruby and javascript code.
+
+- Rails detects `js.erb` files with the same name as the controller `action` and calls it if you enable `respond_to :js`
+
+- We need to do three things when a user creates a new comment:
+  - Reset the form so a new comment can be posted.
+  - Append the bottom of the comments index with the new comment.
+  - Render the flash message.
+
+- Let's do the easiest one first. Since we're no longer refreshing the page if a new comment is posted, we'll need to change the flash a little.
+
+- Instead of just `flash[:success] = <your-message>`. We have to call `flash.now[:success] = <your-message>`
+
+- Similar to our `comments` partial, we are now going to wrap our comments form into a container and move it into a partial:
+
+  ```
+    <div id="comments-form-container">
+      <%= render partial: "form", locals: { comment: @comment, post: @post } %>
+    </div>
+  ```
+
+- Add a new parameter called `remote: true` into your `comments form` as well. Example:
+  ```
+    <%= form_for(comment, url: topic_post_comments_path(post.topic, post), method: :post, remote: true, html: { id: "comment-create-form" }) do |f| %>
+      <!-- your form code -->
+    <% end %>
+  ```
+
+- Now, let's create our `js.erb file` called `create.js.erb`. You may need to configure this based on how you've styled your application:
+
+  ```
+    $('#comments-form-container').html("<%=j render partial: 'comments/form', locals: { comment: @comment, post: @comment.post } %>")
+    $('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")
+  ```
+
+- The first `javascript` function `html` is to replace any `html` inside your `comments-form-container` with the content set inside the `()`
+
+- [<%=j %>](http://apidock.com/rails/ActionView/Helpers/JavaScriptHelper/escape_javascript) or `escape_javascript` is a rails helper method that allows you
+to pass in ruby code as `html string` in `javascript`.
+
+-

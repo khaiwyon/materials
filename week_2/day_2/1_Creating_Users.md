@@ -35,3 +35,5 @@
 - In your routes, add your `user` routes by calling `resources :users, only: [:new, :edit, :create, :update]`
 
 - You can add the codes similarly as to how you would create a `comments` or `posts` controller. Remember to add your strong params.
+
+- Add the views as well for `users new and edit`.
