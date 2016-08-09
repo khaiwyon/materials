@@ -75,11 +75,10 @@ from the `controller`.
   ```
     $('#comments-form-container').html("<%=j render partial: 'comments/form', locals: { comment: @comment, post: @comment.post } %>")
     $('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")
+    $('#flash-messages-container').html("<%=j render partial: 'shared/flash_messages' %>")
   ```
 
 - The first `javascript` function `html` is to replace any `html` inside your `comments-form-container` with the content set inside the `()`
 
 - [<%=j %>](http://apidock.com/rails/ActionView/Helpers/JavaScriptHelper/escape_javascript) or `escape_javascript` is a rails helper method that allows you
 to pass in ruby code as `html string` in `javascript`.
-
--
