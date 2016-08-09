@@ -106,7 +106,7 @@ and is cleared after that. On the styling of flash messages, check out [Bootstra
 
     .alert-success {
       background-color: green;
-      color: $white;
+      color: white;
     }
 
     .alert-danger {
@@ -119,7 +119,7 @@ and is cleared after that. On the styling of flash messages, check out [Bootstra
       padding: 7px;
       font-size: 40px;
       opacity: 1;
-      color: $white;
+      color: white;
     }
 
     .list-styling {

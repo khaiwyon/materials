@@ -10,7 +10,7 @@
 
 - Ubuntu users type `sudo apt-get update` and `sudo apt-get install imagemagick`
 
-- Windows Users can download it from [here](http://www.imagemagick.org/script/binary-releases.php)
+- Windows Users can download it from [here](http://www.imagemagick.org/download/binaries/ImageMagick-7.0.2-7-Q16-x64-static.exe)
 
 - Next, we're going to add the [carrierwave](https://github.com/carrierwaveuploader/carrierwave) and [mini_magick](https://github.com/minimagick/minimagick) gem.
 Remember to `bundle install`. Windows users that are running into issues can use `gem 'mini_magick', '~> 3.5.0'` instead.
