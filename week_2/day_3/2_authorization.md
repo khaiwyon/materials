@@ -122,3 +122,20 @@ it will render an error.
 - Notice now that other methods use the method `new?`, this essentially calls `user.present? && user.admin?` instead having to type it all over again.
 
 - In summary, we've set that while anyone can view (index) the topics, creating, editing, and deleting topics are only restricted to admins.
+
+- Finally, inside your topics controller, we can call the policy by adding the method `authorize`, like so:
+
+  ```
+  class TopicsController < ApplicationController
+    <-- Some other code -->
+
+    def new
+      @topic = Topic.new
+      authorize @topic
+    end
+
+    <-- Some other code -->
+  end
+  ```
+
+- `current_user` is automatically passed into pundit if it is declared so you don't have to worry about passing in the `user` object.

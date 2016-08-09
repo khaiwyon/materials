@@ -157,3 +157,27 @@ as the hash name instead of the object's name.
 - With that done, let's create `edit.html.erb` in `views/password_resets`
 
   ```
+    <div class="password-resets edit">
+      <div class="content">
+        <%= form_for(:user, url: password_reset_path(id: @token), method: :patch, html: { id: "user-set-new-password-form" }) do |f| %>
+          <h1 class="white shadowed text-center">
+            Set New Password
+          </h1>
+
+          <div class="form-group">
+            <h4> <%= f.label :password_field, "Password", class: "white shadowed" %> </h4>
+            <%= f.password_field :password, required: true,  id: 'user_password_field', class: 'form-control' %>
+          </div>
+
+          <div class="form-group text-center">
+            <%= f.submit "Update my password!", class: "btn btn-primary btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  ```
+
+- SAMPLE ONLY: YOU SHOULD STYLE IT ON YOUR OWN.
+
+- The form above only takes one field - password. `@token` is `params[:id]` passed from your url (notice the weird string at the end). The controller will then take
+that parameter and pass it to `update` where it searches for the matching `user` based on that params and updates the password.
