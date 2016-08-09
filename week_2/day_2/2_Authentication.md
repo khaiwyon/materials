@@ -117,3 +117,33 @@ the app.
 
 - The reason why the method is available to your `topics` controller is because it inherits all methods available in its parent - the `application controller`, marked by the following syntax:
   ``` class TopicsController < ApplicationController ```
+
+## BONUS: Tweaking your header
+
+- Let's now say that you want to show only certain links when your user is logged in, you can do it this way:
+
+- EXAMPLE ONLY FOR `HEADER`
+
+  ```
+    <% if current_user %>
+      <li>
+        <%= link_to current_user.username, edit_user_path(current_user), class: 'white shadowed link-styling' %>
+      </li>
+
+      <li>
+        <%= link_to "Logout", session_path(current_user), method: :delete, class: 'white shadowed link-styling' %>
+      </li>
+
+    <% else %>
+
+      <li>
+        <%= link_to "Register", new_user_path, class: 'white shadowed link-styling' %>
+      </li>
+
+      <li>
+        <%= link_to "Login", new_session_path, class: 'white shadowed link-styling' %>
+      </li>
+    <% end %>
+  ```
+
+- What this does is that it checks to see if there is a `current_user` (is a user logged in), then show the appropriate links (logout).
