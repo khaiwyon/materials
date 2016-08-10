@@ -40,3 +40,10 @@
   ```
     @url = "#{ENV.fetch('SERVER_URL')}/password_resets/#{@user.password_reset_token}/edit"
   ```
+
+- If you have pushed an `app` to `heroku`. You can configure your `production` url:
+
+  ```
+    production:
+      SERVER_URL: "<your-heroku-url-here"
+  ```

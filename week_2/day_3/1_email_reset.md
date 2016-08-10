@@ -32,7 +32,7 @@
         user = User.find_by(email: reset_password_params[:email])
 
         if user
-          user.update(password_reset_token: password_token, password_reset_at: DateTime.now)
+          user.update(password_reset_token: password_reset_token, password_reset_at: DateTime.now)
           PasswordResetsMailer.password_reset_mail(user).deliver_now
           flash[:success] = "We've sent you instructions on how to reset your password"
         else
@@ -69,7 +69,7 @@
         params.require(:user).permit(:password)
       end
 
-      def password_token
+      def password_reset_token
         SecureRandom.urlsafe_base64
       end
 
