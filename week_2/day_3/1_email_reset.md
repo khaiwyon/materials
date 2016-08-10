@@ -55,7 +55,7 @@
           redirect_to root_path
         else
           flash[:danger] = "Error, token is invalid or has expired"
-          redirect_to edit_password_reset(id: params[:id])
+          redirect_to edit_password_reset_path(id: params[:id])
         end
       end
 
