@@ -69,7 +69,7 @@ authenticates them by comparing their password with the hash and saving their id
 
     def current_user
       return unless session[:id]
-      @user ||= User.find_by(id: session[:id])
+      @current_user ||= User.find_by(id: session[:id])
     end
     helper_method :current_user
   end

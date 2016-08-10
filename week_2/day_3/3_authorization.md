@@ -4,7 +4,7 @@
 
 - Now that' we've build our authentication module, it's time to add authorization.
 
-- Note that if you did not add a `role default` to `0`, you can set it now with generationg a rails migration file.
+- Note that if you did not add a `role default` to `0`, you can set it now with generating a rails migration file.
 
 - `rails g migration AddDefaultToUserRole`
 
@@ -18,7 +18,7 @@
 
 - We're going to have 3 different user roles - the admin, the moderator, and the user.
 
-- Let's add this in. Remember that we've already added the attirbute `role:integer` in our `users table`
+- Let's add this in. Remember that we've already added the attribute `role:integer` in our `users table`
 
 -
 
