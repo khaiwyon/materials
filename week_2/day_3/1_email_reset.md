@@ -79,6 +79,8 @@
     end
   ```
 
+- Remember to set your `routes` in `routes.rb`!
+
 - `new` is the `html` page that contains a form that takes in a user's email. (The page to initialize a user's password reset)
 
 - `create` does 3 things:
