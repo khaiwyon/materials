@@ -22,6 +22,8 @@
   end
   ```
 
+- Now that you've added this for create, be sure to do this for the remaining ones - `posts` and `comments`
+
 - FURTHER READING:
 
 [building associations](http://guides.rubyonrails.org/association_basics.html#detailed-association-reference)
