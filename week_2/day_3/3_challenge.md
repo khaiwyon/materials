@@ -2,6 +2,16 @@
 
 ## Challenge
 
+- Let's now test your user role, go to `rails c` and update one user in your record to by admin.
+
+  ```
+    rails c
+
+    <-- Inside terminal -->
+    user = # Pick one user
+    user.update(role: :admin)
+  ```
+
 - Building from your lesson with authorization. Do the same thing for users, posts and comments.
 
 - The requirement is that admin and moderators can edit and delete and comment or post. But users can only edit or delete their own post or comment - not others.
