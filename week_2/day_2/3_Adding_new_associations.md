@@ -22,7 +22,7 @@
   end
   ```
 
-- Now that you've added this for create, be sure to do this for the remaining ones - `posts` and `comments`
+- Now that you've added this for create, be sure to do this for the remaining ones - `posts` and `comments` `create`.
 
 - FURTHER READING:
 
