@@ -75,10 +75,16 @@ from the `controller`.
 - Now, let's create our `js.erb file` called `create.js.erb`. You may need to configure this based on how you've styled your application:
 
   ```
-    $('#comments-form-container').html("<%=j render partial: 'comments/create_form', locals: { comment: @new_comment, post: @post } %>")
-    $('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @post } %>")
     $('#flash-messages-container').html("<%=j render partial: 'shared/flash_messages' %>")
+
+    <% if @comment.persisted? %>
+      $('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")
+      $('#comments-form-container').html("<%=j render partial: 'comments/create_form', locals: { comment: @new_comment, post: @post } %>")
+    <% end %>
   ```
+
+- We'll now have to make a check on `@comment`. `persisted?` is a method that checks to see if `@comment` is in the database - hence it was successfully saved. If it was successfully saved,
+we'll then render partial, otherwise we'll omit it.
 
 - We'll also make the necessary adjustment to our controller to allow `@new_comment`
 
