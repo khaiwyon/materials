@@ -98,7 +98,8 @@ we'll then render partial, otherwise we'll omit it.
 - We'll also make the necessary adjustment to our controller to allow `@new_comment`
 
 - EXAMPLE of my `create` method:
-  ``
+
+  ```
   def create
     @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
     @new_comment = Comment.new
