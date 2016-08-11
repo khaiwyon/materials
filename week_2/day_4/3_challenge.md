@@ -2,4 +2,6 @@
 
 ## Challenge
 
-- With what you've learnt from AJAX, build the same for `posts new and topics new`.
+- With what you've learnt from AJAX, build an implementation of `edit comment`, in which a form will generate at the element where the comment is.
+
+- If you're feeling adventurous, build the feature for creating a new topic and post.
