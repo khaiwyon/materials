@@ -13,8 +13,12 @@ important for applications such as chat
   - Mac users can install it by typing in their terminal `brew install redis`
   - Ubuntu users can install it by following this [guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)
 
-- Next, we'll need to install [redis](https://github.com/redis/redis-rb) gem.
+- We'll also need to install [redis](https://github.com/redis/redis-rb) gem.
 
+- Go to your `routes.rb` file and add the following line:
+  ```
+    mount ActionCable.server => '/cable'
+  ```
 
 - Next, open your `config/cable.yml` and change the following to this:
 
