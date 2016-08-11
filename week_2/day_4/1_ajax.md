@@ -128,7 +128,7 @@ to pass in ruby code as `html string` in `javascript`.
 
 ## Allowing image upload in AJAX.
 
-- First, add `gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d' into your `gemfile`.
+- First, add `gem 'remotipart', github: 'sr3d/remotipart'` into your `gemfile`.
 
 - Next, open you `application.js` file and add `//= require jquery.remotipart` under `jquery_ujs`
 
