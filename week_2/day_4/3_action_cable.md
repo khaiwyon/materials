@@ -86,10 +86,10 @@ a timeout ensures that this piece of code runs after the code in `create.js.erb`
 
 - Finally, we're going to add an [ActiveJob](http://guides.rubyonrails.org/active_job_basics.html) to broadcast the new comment to anyone who is in the post itself.
 
-- Create a new file called `new_comment_broadcast_job.rb` and paste in the following:
+- Create a new file called `comment_broadcast_job.rb` and paste in the following:
 
   ```
-  class NewCommentBroadcastJob < ApplicationJob
+  class CommentBroadcastJob < ApplicationJob
     queue_as :default
 
     def perform(comment, user)
@@ -128,7 +128,7 @@ a timeout ensures that this piece of code runs after the code in `create.js.erb`
 
 - This is the function to request for permission from the user to allow notifications to be displayed on the browser.
 
-- Next, we're going to add extra code into your `receieved(data)` function.
+- Next, we're going to add extra code into your `received(data)` function.
 
   ```
   received: (data) ->
