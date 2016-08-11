@@ -103,6 +103,8 @@ we'll then render partial, otherwise we'll omit it.
   end
   ```
 
+- Note that we now do not need `redirect_to` because we no longer need the page to refresh itself to reflect our newest changes.
+
 - The first `javascript` function `html` is to replace any `html` inside your `comments-form-container` with the content set inside the `()`
 
 - [<%=j %>](http://apidock.com/rails/ActionView/Helpers/JavaScriptHelper/escape_javascript) or `escape_javascript` is a rails helper method that allows you
