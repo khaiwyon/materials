@@ -73,9 +73,26 @@ from the `controller`.
 - Now, let's create our `js.erb file` called `create.js.erb`. You may need to configure this based on how you've styled your application:
 
   ```
-    $('#comments-form-container').html("<%=j render partial: 'comments/form', locals: { comment: @comment, post: @comment.post } %>")
-    $('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")
+    $('#comments-form-container').html("<%=j render partial: 'comments/create_form', locals: { comment: @new_comment, post: @post } %>")
+    $('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @post } %>")
     $('#flash-messages-container').html("<%=j render partial: 'shared/flash_messages' %>")
+  ```
+
+- We'll also make the necessary adjustment to our controller to allow `@new_comment`
+
+- EXAMPLE of my `create` method:
+  ``
+  def create
+    @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
+    @new_comment = Comment.new
+    @post = Post.find_by(id: params[:post_id])
+
+    if @comment.save
+      flash.now[:success] = "Comment created"
+    else
+      flash.now[:danger] = @comment.errors.full_messages
+    end
+  end
   ```
 
 - The first `javascript` function `html` is to replace any `html` inside your `comments-form-container` with the content set inside the `()`
