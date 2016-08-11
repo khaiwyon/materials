@@ -9,7 +9,12 @@
 - Regular HTTP only updates information on the page when you refresh the page. With web sockets, it is updated in real time. This is especially
 important for applications such as chat
 
-- Let's start by installing [redis](https://github.com/redis/redis-rb) gem.
+- Let's start with installing `redis` server on your machine:
+  - Mac users can install it by typing in their terminal `brew install redis`
+  - Ubuntu users can install it by following this [guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)
+
+- Next, we'll need to install [redis](https://github.com/redis/redis-rb) gem.
+
 
 - Next, open your `config/cable.yml` and change the following to this:
 
@@ -71,3 +76,75 @@ important for applications such as chat
 - Likewise, `disconnected()` is the callback when you're disconnected.
 
 - `received(data)` is the callback with the parameter `data` when `rails broadcasts` a new `message` to the appropriate `channel`
+
+- We're setting a timeout because of how [asynchronous programming](http://stackoverflow.com/questions/748175/asynchronous-vs-synchronous-execution-what-does-it-really-mean) works. Setting
+a timeout ensures that this piece of code runs after the code in `create.js.erb`
+
+- `$('.comments.index').data().id == data.post_id` checks to make sure that the user is in the appropriate post page before the comment is appended to the page.
+
+- `$(".comment[data-id=#{data.comment_id}]").length < 1` is implemented to prevent redundancy (because you've already appended it in `create.js.erb` file).
+
+- Finally, we're going to add an [ActiveJob](http://guides.rubyonrails.org/active_job_basics.html) to broadcast the new comment to anyone who is in the post itself.
+
+- Create a new file called `new_comment_broadcast_job.rb` and paste in the following:
+
+  ```
+  class NewCommentBroadcastJob < ApplicationJob
+    queue_as :default
+
+    def perform(comment, user)
+      ActionCable.server.broadcast 'posts_channel', comment: comment, post: comment.post, partial: render_comment_partial(comment, user)
+    end
+
+    private
+
+    def render_comment_partial(comment, user)
+      CommentsController.render partial: "comments/comment", locals: { comment: comment, post: comment.post, current_user: user }
+    end
+  end
+  ```
+
+- In reference to the documentation, `perform` is the method that `rails` will use to take action on.
+
+- `render_comment_partial` is a private method we've built to create the `html string` that we will pass to our `js` side later.
+
+- `ActionCable.server.broadcast` will send the following json to anyone who is subscribed to the `posts_channel`. In this case, we are sending in
+  `{ comment: <comment>, post: <post>, partial: '<div></div>' }`
+
+- If you want to find out more about what you actually get, you can type debugger under `received(data)` and type a comment with `chrome debugger` open.
+
+## A little fun with Notifications
+
+- Let's have a little fun and build a notification system if the user is not zoomed on the page.
+
+- Create a `coffee` file called `notifications_permission.coffee`
+
+  ```
+    notificationPermission = () ->
+    Notification.requestPermission()
+
+    $(document).on 'turbolinks:load', notificationPermission
+  ```
+
+- This is the function to request for permission from the user to allow notifications to be displayed on the browser.
+
+- Next, we're going to add extra code into your `receieved(data)` function.
+
+  ```
+  received: (data) ->
+  setTimeout(
+    if $('.comments.index').data().id == data.post.id && $(".comment[data-id=#{data.comment.id}]").length < 1
+      $('#comments').append(data.partial)
+
+      if document.hidden
+        notification = new Notification data.post.title, body: data.comment.body, icon: data.post.image.thumb.url
+
+        notification.onclick = () ->
+          window.focus()
+          this.close()
+  , 100)
+  ```
+
+- `document.hidden` checks to see if the user is on the current tab / browser or not.
+
+- You can find out more about `Notification` [here](https://developer.mozilla.org/en/docs/Web/API/notification)
