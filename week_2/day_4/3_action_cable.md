@@ -148,3 +148,16 @@ a timeout ensures that this piece of code runs after the code in `create.js.erb`
 - `document.hidden` checks to see if the user is on the current tab / browser or not.
 
 - You can find out more about `Notification` [here](https://developer.mozilla.org/en/docs/Web/API/notification)
+
+- Finally, to implement this, add the following method into your `comments controller - create` method:
+
+  ```
+  if @comment.save
+    flash.now[:success] = "Comment created"
+    CommentBroadcastJob.perform_later(@comment, current_user, "create")
+  else
+    flash.now[:danger] = @comment.errors.full_messages
+  end
+  ```
+
+- `CommentBroadcastJob.perform_later(@comment, current_user, "create")` will trigger `Rails` to broadcast your new comment to any other user who is visiting that `post` as well.
