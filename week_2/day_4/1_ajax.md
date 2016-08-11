@@ -72,6 +72,15 @@ from the `controller`.
     <% end %>
   ```
 
+- Finally, we'll need to do a little refactoring. Previously, you would use `instance variables` such as `@comment`, `@topic` or `@post`. This applies slightly differently in a `partial`.
+`Partials` that are rendered through a controller action - `new` for example will be able to render it properly because the required `instance variables` are loaded from the controller. This is different
+when you run `render partial`. The action does not go through the `controller` in a traditional sense, hence the `instance variable` will not be available. This is why we have to pass it through `local: {}`.
+
+- For example, if your partial requires `@post`, you will need to turn it into `post` and pass it through `render partial`.
+  ```
+    render partial: "<your-partial-name>", locals: { post: @post }
+  ```
+
 - Now, let's create our `js.erb file` called `create.js.erb`. You may need to configure this based on how you've styled your application:
 
   ```
