@@ -1,4 +1,4 @@
-# Day 4
+# Day 3
 
 ## Going AJAX
 
@@ -7,7 +7,7 @@
 - [Ajax](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started) is the acronym for "Asynchronous Javascript And XML". In simple terms,
 AJAX's greatest appeal is the ability to make a server-side call without refreshing the page itself.
 
-- Let's start by first adding `respond_to :js` at the top of your `comments_controller`
+- Let's start by first adding `respond_to :js` at the top of your `comments_controller`. If it isn't working, add the `gem 'responders'` into your gemfile.
 
   ```
   class CommentsController < ApplicationController
