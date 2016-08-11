@@ -26,6 +26,8 @@ method that sets what sort of format the action should respond to on top of the 
 - We're next going to remove `new` from comments. Go ahead and delete `comments/new.html.erb` and remove `new` method
 from the `controller`.
 
+- PRE-INFO: ALL YOUR PARTIALS SHOULD BE IN THE `COMMENTS` FOLDER:
+
 - Now, we're going to move the html in your `@comments` loop into a partial:
 
 - For example:
