@@ -82,3 +82,16 @@ from the `controller`.
 
 - [<%=j %>](http://apidock.com/rails/ActionView/Helpers/JavaScriptHelper/escape_javascript) or `escape_javascript` is a rails helper method that allows you
 to pass in ruby code as `html string` in `javascript`.
+
+## Allowing image upload in AJAX.
+
+- First, add `gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d' into your `gemfile`.
+
+- Next, open you `application.js` file and add `//= require jquery.remotipart` under `jquery_ujs`
+
+- Finally, add `authenticty_token: true, and html: { multipart: true }` to you forms.
+
+- EXAMPLE:
+  ```
+  <%= form_for(comment, url: topic_post_comments_path(post.topic, post), method: :post, authenticity_token: true, remote: true, html: { id: "comment-create-form", multipart: true }) do |f| %>
+  ```
