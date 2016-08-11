@@ -59,10 +59,8 @@ important for applications such as chat
       disconnected: () ->
 
       received: (data) ->
-        setTimeout(
-          if $('.comments.index').data().id == data.post_id && $(".comment[data-id=#{data.comment_id}]").length < 1
-            $('#comments').append(data.partial)
-        , 100)
+        if $('.comments.index').data().id == data.post_id && $(".comment[data-id=#{data.comment_id}]").length < 1
+          $('#comments').append(data.partial)
 
     $(document).on 'turbolinks:load', postsChannelFunctions
   ```
@@ -77,8 +75,10 @@ important for applications such as chat
 
 - `received(data)` is the callback with the parameter `data` when `rails broadcasts` a new `message` to the appropriate `channel`
 
-- We're setting a timeout because of how [asynchronous programming](http://stackoverflow.com/questions/748175/asynchronous-vs-synchronous-execution-what-does-it-really-mean) works. Setting
-a timeout ensures that this piece of code runs after the code in `create.js.erb`
+- Now that we've using `ActionCable` to generate our comments, we don't need to do it in our `create.js.erb` anymore. Go ahead and remove this part:
+  ```
+    $('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")
+  ```
 
 - `$('.comments.index').data().id == data.post_id` checks to make sure that the user is in the appropriate post page before the comment is appended to the page.
 
