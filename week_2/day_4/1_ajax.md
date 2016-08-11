@@ -50,7 +50,7 @@ from the `controller`.
 
 - We need to do three things when a user creates a new comment:
   - Reset the form so a new comment can be posted.
-  - Append the bottom of the comments index with the new comment.
+  - Append the bottom of the element with the id 'comments' index with the new comment.
   - Render the flash message.
 
 - Let's do the easiest one first. Since we're no longer refreshing the page if a new comment is posted, we'll need to change the flash a little.
@@ -94,6 +94,12 @@ when you run `render partial`. The action does not go through the `controller` i
 
 - We'll now have to make a check on `@comment`. `persisted?` is a method that checks to see if `@comment` is in the database - hence it was successfully saved. If it was successfully saved,
 we'll then render partial, otherwise we'll omit it.
+
+- [append](http://api.jquery.com/append/) and [html](http://api.jquery.com/html/) are `jquery` methods:
+  - `append` takes the element called prior to this method (in this case '#comments') and attaches the latest comment div into the bottom.
+  - `html` takes a div and replaces its contents with the new things.
+
+- So, what we've done is that we search for the div with the id `comments` and append the latest comment to it, similarly, we looked for $('#comments-form-container') and replace the old form with a new one.
 
 - We'll also make the necessary adjustment to our controller to allow `@new_comment`
 
