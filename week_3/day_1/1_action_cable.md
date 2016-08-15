@@ -68,7 +68,8 @@ important for applications such as chat
       disconnected: () ->
 
       received: (data) ->
-        $(".comment[data-id=#{data.comment.id}]").after(data.partial).remove();
+      if $('.comments.index').data().id == data.post.id && $(".comment[data-id=#{data.comment.id}]").length < 1
+        $('#comments').append(data.partial)
         checkMe(data.comment.id)
 
     $(document).on 'turbolinks:load', postsChannelFunctions
@@ -183,16 +184,13 @@ This is to allow the check by JS as seen inside the `checkMe` function to trim t
     @post = Post.find_by(id: params[:post_id])
 
     if @comment.save
-      CommentBroadcastJob.perform_later("create", @comment)
+      CommentBroadcastJob.set(wait: 0.1.seconds).perform_later("create", @comment)
       flash.now[:success] = "Comment created"
     else
       flash.now[:danger] = @comment.errors.full_messages
     end
   end
   ```
-
-- Finally, you can remove the `$('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")` from `create.js.erb`. It is now redundant, the comment partial
-has been delegated to `post_channel.coffee`.
 
 ## Challenge:
 
