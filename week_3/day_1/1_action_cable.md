@@ -188,4 +188,19 @@ has been delegated to `post_channel.coffee`.
 
 ## Challenge:
 
-- Build an implementation for
+- Build an implementation for edit and destroy.
+
+- HINTS:
+
+- Notice the argument `type` in `CommentBroadcastJob` - you can use to the pass the action type to your broadcast job so your js will know what to do for each comment action type.
+
+- Example:
+  ```
+  received: (data) ->
+  switch data.type
+    when "create" then createComment(data)
+    when "update" then updateComment(data)
+    when "destroy" then destroyComment(data)
+  ```
+
+- This is a simple switch that performs the appropriate function depending on what data.type is - which is send from `broadcast` in your comments job.
