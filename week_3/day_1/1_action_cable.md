@@ -192,6 +192,8 @@ This is to allow the check by JS as seen inside the `checkMe` function to trim t
   end
   ```
 
+- NOTE: We're setting a short wait timer because we want the render in `create.js.erb` to fire first before the one in actioncable does.
+
 ## Challenge:
 
 - Build an implementation for edit and destroy.
