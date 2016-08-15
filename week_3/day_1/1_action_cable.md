@@ -161,9 +161,18 @@ implementation on the front-end.
 - `render_comment_partial` is the method used to render the comment partial. As the render method is inside the Controller Class - we'll need to declare `CommentsController` in order
 to render it. The rest is fairly similar to what you would call in the `views`.
 
-- Note that `extra_class` is the value passed in for `<div class="comment <%=extra_class%>" data-id="<%= comment.id %>">` in the comment partial to first render it to the user hidden.
+- Note that `extra_class` is the value passed in for `<div class="comment <%=extra_class%>" data-id="<%= comment.id %>">` in the comment partial to first render it to the user hidden. Remember to edit your partials to allow
+this value to be passed.
 
-- This is to allow the check by JS as seen inside the `checkMe` function to trim the `control-panel` element if the user is not an admin.
+- In this case, I've passed in the value `hidden` to the partial to make sure it's hidden first.
+This is to allow the check by JS as seen inside the `checkMe` function to trim the `control-panel` element if the user is not an admin before revealing it to the user.
+
+- CSS for hidden:
+  ```
+  .hidden {
+    display: none;
+  }
+  ```
 
 - Now to call the function inside your comments controller. Inside your `create` method, add `CommentBroadcastJob.perform_later("create", @comment)` after `@comment.save`:
 
@@ -184,7 +193,6 @@ to render it. The rest is fairly similar to what you would call in the `views`.
 
 - Finally, you can remove the `$('#comments').append("<%=j render partial: 'comments/comment', locals: { comment: @comment, post: @comment.post } %>")` from `create.js.erb`. It is now redundant, the comment partial
 has been delegated to `post_channel.coffee`.
-
 
 ## Challenge:
 
