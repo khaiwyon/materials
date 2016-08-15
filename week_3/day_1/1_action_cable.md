@@ -91,7 +91,7 @@ important for applications such as chat
 we will remove the `control-panel` div (seen below) to remove the edit and delete buttons from the user. The check is seen here
 ```if $('meta[name=wizardwonka]').length < 1```
 
-- This is the `meta` on the `header` file that is rendered on your `head` file inside your `application.html.erb`:
+- This is the `meta` that is rendered on your `<head>` tag inside your `application.html.erb`:
   ```
   <% if current_user && (current_user.admin? || current_user.moderator?) %>
     <meta name="wizardwonka">
