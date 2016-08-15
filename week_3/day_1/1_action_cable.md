@@ -124,8 +124,8 @@ we will remove the `control-panel` div (seen below) to remove the edit and delet
           <p class="date"> Posted: <%= comment.created_at %> </p>
           <% user_image = comment.user.image.thumb.url || "" %>
           <p>
-            <span class="poster-image"> <%= image_tag user_image %>
-            <span class="poster"> <%= comment.user.username %>
+            <span class="poster-image"> <%= image_tag user_image %> </span>
+            <span class="poster"> <%= comment.user.username %> </span>
           </p>
         </div>
       </div>
@@ -175,7 +175,7 @@ This is to allow the check by JS as seen inside the `checkMe` function to trim t
   }
   ```
 
-- Now to call the function inside your comments controller. Inside your `create` method, add `CommentBroadcastJob.perform_later("create", @comment)` after `@comment.save`:
+- Now to call the function inside your comments controller. Inside your `create` method, add `CommentBroadcastJob.set(wait: 0.1.seconds).perform_later("create", @comment)` after `@comment.save`:
 
   ```
     def create
