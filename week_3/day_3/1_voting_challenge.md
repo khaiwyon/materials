@@ -21,7 +21,7 @@
   ```
     class Vote < ApplicationRecord
       belongs_to :user
-      belongs_to :imageable, polymorphic: true
+      belongs_to :voteable, polymorphic: true
     end
 
     class Post < ApplicationRecord
