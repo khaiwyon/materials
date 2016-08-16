@@ -31,22 +31,44 @@
     end
   ```
 
-- Build a votes controller. Create 2 custom methods called `upvote` and `downvote`. Create 2 new `POST` routes called `/votes/upvote` and `/votes/downvote`. I'll help you with one:
+- Build a votes controller. Create 2 custom methods called `upvote` and `downvote`. Create 2 new `POST` routes called `/upvote` and `/downvote`. I'll help you with one:
 
   ```
     post :upvote, to: 'votes#upvote'
   ```
 
 - Both method works like this:
-  - It searches for the votes table for the matching user and post/comment.
+  - It searches for the votes table for the matching user and comment.
   - If a record is found, it updates that record with the `value` of `+1` or `-1`
   - If a record is not found, it creates a new record with the `value` of `+1` or `-1`.
 
-- IMPORTANT: Use the methods [where](http://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html#method-i-where) and [count](http://apidock.com/rails/ActiveRecord/Calculations/ClassMethods/count)
+- HINT: You can try using [this](http://apidock.com/rails/v4.0.2/ActiveRecord/Relation/find_or_create_by) method.
 
-- Create a new method called `votes` inside your `post` and `comment` model.
+- Create a new method called `votes` inside your `comment` model.
 
 - `votes` method makes 2 queries: it counts the number of `+1` votes and `-1` votes and tallies them. Check the `IMPORTANT` methods to use.
+
+- EXAMPLE:
+  ```
+    class Comment < ApplicationRecord
+      <-- your-code-here -->
+      def total_votes
+        <-- your-challenge-here -->
+      end
+    end
+  ```
+
+- This will allow you to call a new attribute - `total_votes`. Try it in your console:
+
+  ```
+    c = Comment.first
+    c.total_votes
+  ```
+
+- HOW TO GET YOUR TOTAL VOTES:
+  - fetch the values of all your votes associated with the comment
+  - tally the total of values
+  - Hint: use [pluck](http://apidock.com/rails/ActiveRecord/Calculations/pluck) and [sum](http://apidock.com/rails/Enumerable/sum)
 
 - If you're feeling very ambitious, add these features:
   - If a user has voted on this post or comment, it will highlight the button with another color.
