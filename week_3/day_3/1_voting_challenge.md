@@ -2,7 +2,7 @@
 
 ## The Voting Challenge
 
-- We're now going to implement a voting feature for posts and comment.
+- We're now going to implement a voting feature for comments.
 
 - Two buttons will be available to users, a `+` and a `-` to mark if they like or dislike the comment or post.
 
@@ -12,31 +12,22 @@
 
 ### HINTS TO GET YOU STARTED:
 
-- Refer to [this](http://guides.rubyonrails.org/association_basics.html#polymorphic-associations). You will need to build a polymorphic association.
-
-- Create a new model called `Vote`. It has 4 attributes - `value`, `user_id`, `voteable_id`, `voteable_type`
+- Create a new model called `Vote`. It has 4 attributes - `value`, `user_id`, `comment_id`
 
 - The associations are:
 
   ```
     class Vote < ApplicationRecord
       belongs_to :user
-      belongs_to :voteable, polymorphic: true
-    end
-
-    class Post < ApplicationRecord
-      has_many :votes, as: :voteable
-      <-- your other code -->
+      belongs_to :comments
     end
 
     class Comment < ApplicationRecord
-      has_many :votes, as: :voteable
-      <-- your other code -->
+      has_many :votes
     end
 
     class User < ApplicationRecord
       has_many :votes
-      <-- your other code -->
     end
   ```
 
