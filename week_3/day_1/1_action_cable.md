@@ -54,12 +54,13 @@ important for applications such as chat
   ```
     postsChannelFunctions = () ->
 
-    checkMe = (comment_id) ->
-      if $('meta[name=wizardwonka]').length < 1
-        $(".comment[data-id=#{comment_id}] .control-panel").remove()
-      $(".comment[data-id=#{comment_id}]").removeClass("hidden")
+    checkMe = (comment_id, username) ->
 
-    if $('.comments.index').length > 0
+      unless $('meta[name=admin]').length > 0 || $("meta[user=#{username}]").length > 0
+        $("<your-comment-element-name>[data-id=#{comment_id}] .<your-buttons-container-element>").remove()
+      $("<your-comment-element-name>[data-id=#{comment_id}]").removeClass("hidden")
+
+    if $('<your-comments-index-element>').length > 0
       App.posts_channel = App.cable.subscriptions.create {
         channel: "PostsChannel"
       },
@@ -68,8 +69,8 @@ important for applications such as chat
       disconnected: () ->
 
       received: (data) ->
-      if $('.comments.index').data().id == data.post.id && $(".comment[data-id=#{data.comment.id}]").length < 1
-        $('#comments').append(data.partial)
+      if $('<your-comments-index-element>').data().id
+        $('<your-comments-container>').append(data.partial)
         checkMe(data.comment.id)
 
     $(document).on 'turbolinks:load', postsChannelFunctions
@@ -87,48 +88,33 @@ important for applications such as chat
 
 - NOTE: The partial rendered is by default hidden when it is rendered from the back-end (I will explain it clearly in a few moments).
 
-- `checkMe` is a custom function we've added to check if the user that is logged in is an admin or not - if they are,
-we will remove the `control-panel` div (seen below) to remove the edit and delete buttons from the user. The check is seen here
-```if $('meta[name=wizardwonka]').length < 1```
+- `checkMe` is a custom function we've added to check if the user that is logged in is an admin or the comment's owner or not - if they are not,
+we will remove the `<your-buttons-container-element>` div to remove the edit and delete buttons from the user. The check is seen here:
+```unless $('meta[name=admin]').length > 0 || $("meta[user=#{username}]").length > 0```
 
 - This is the `meta` that is rendered on your `<head>` tag inside your `application.html.erb`:
   ```
-  <% if current_user && (current_user.admin? || current_user.moderator?) %>
-    <meta name="wizardwonka">
+  <% if current_user %>
+    <meta user="<%=current_user.username%>">
+    <% if current_user.admin? || current_user.moderator? %>
+      <meta name="admin">
+    <% end %>
   <% end %>
   ```
 
-- Simply put - it generates the `meta` named `wizardwonka` if the logged user is an admin or a moderator.
+- This is fairly simple, if a user is logged in render their username as a `meta tag`, and if they are an admin, render `meta tag` `admin`
 
-- EXAMPLE: My comment partial -
-
+- Next, we'll add `data-id` to your `comments index` page to uniquely identify your each of your post. For example:
   ```
-    <div class="comment <%=extra_class%>" data-id="<%= comment.id %>">
-      <div class="imagebox vertical-center">
-        <% image = comment.image.url || "" %>
-        <%= image_tag image, class: 'img-responsive' %>
-      </div>
+    <div class="your-comments-index" data-id="<%=@post.id%>">
+      <-- your html code -->
+    </div>
+  ```
 
-      <div class="textbox vertical-center">
-        <div>
-          <h4> <%= comment.body %> </h4>
-          <div class="control-panel">
-            <% if comment.user == current_user %>
-              <%= link_to "Edit Comment", edit_topic_post_comment_path(post.topic, post, comment), remote: true, class: 'btn btn-primary' %>
-            <% end %>
-
-            <% if comment.user == current_user || current_user&.admin? || current_user&.moderator? %>
-              <%= link_to "Delete Comment", topic_post_comment_path(post.topic, post, comment), remote: true, method: :delete, data: { confirm: "Delete comment?" }, class: 'btn btn-danger' %>
-            <% end %>
-          </div>
-          <p class="date"> Posted: <%= comment.created_at %> </p>
-          <% user_image = comment.user.image.thumb.url || "" %>
-          <p>
-            <span class="poster-image"> <%= image_tag user_image %> </span>
-            <span class="poster"> <%= comment.user.username %> </span>
-          </p>
-        </div>
-      </div>
+- You should do the same for your `_comment.html.erb` partial if you have not:
+  ```
+    <div class="comment" data-id="<%=comment.id%>">
+      <-- your html code -->
     </div>
   ```
 
@@ -145,7 +131,7 @@ to `queue` jobs in the backend. These jobs are usually run in parallel by anothe
     queue_as :default
 
     def perform(type, comment)
-      ActionCable.server.broadcast 'posts_channel', type: type, comment: comment, post: comment.post, partial: render_comment_partial(comment)
+      ActionCable.server.broadcast 'posts_channel', type: type, comment: comment, post: comment.post, username: comment.user.username, partial: render_comment_partial(comment)
     end
 
     private
@@ -175,7 +161,7 @@ This is to allow the check by JS as seen inside the `checkMe` function to trim t
   }
   ```
 
-- Now to call the function inside your comments controller. Inside your `create` method, add `CommentBroadcastJob.set(wait: 0.1.seconds).perform_later("create", @comment)` after `@comment.save`:
+- Now to call the function inside your comments controller. Inside your `create` method, add `CommentBroadcastJob.perform_later("create", @comment)` after `@comment.save`:
 
   ```
     def create
@@ -184,7 +170,7 @@ This is to allow the check by JS as seen inside the `checkMe` function to trim t
     @post = Post.find_by(id: params[:post_id])
 
     if @comment.save
-      CommentBroadcastJob.set(wait: 0.1.seconds).perform_later("create", @comment)
+      CommentBroadcastJob.perform_later("create", @comment)
       flash.now[:success] = "Comment created"
     else
       flash.now[:danger] = @comment.errors.full_messages
@@ -192,13 +178,15 @@ This is to allow the check by JS as seen inside the `checkMe` function to trim t
   end
   ```
 
-- NOTE: We're setting a short wait timer because we want the render in `create.js.erb` to fire first before the one in actioncable does.
+- Finally, remove your `append` or `prepend` javascript function from your `create.js.erb` because you don't need it anymore.
 
 ## Challenge:
 
 - Build an implementation for edit and destroy.
 
 - HINTS:
+
+- User `debugger` in your `javascript` files. `debugger` works similar to `binding.pry`
 
 - Notice the argument `type` in `CommentBroadcastJob` - you can use to the pass the action type to your broadcast job so your js will know what to do for each comment action type.
 
