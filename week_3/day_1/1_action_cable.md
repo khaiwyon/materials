@@ -68,7 +68,7 @@ important for applications such as chat
         disconnected: () ->
 
         received: (data) ->
-          if $('<your-comments-index-element>').data().id
+          if $('<your-comments-index-element>').data().id == data.post.id
             $('<your-comments-container>').append(data.partial)
             checkMe(data.comment.id)
 
