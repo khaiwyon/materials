@@ -94,7 +94,7 @@ important for applications such as chat
         $("<your-comment-element-name>[data-id=#{comment_id}] .<your-buttons-container-element>").remove()
       $("<your-comment-element-name>[data-id=#{comment_id}]").removeClass("hidden")
   ```
-  
+
 - `checkMe` is a custom function we've added to check if the user that is logged in is an admin or the comment's owner or not - if they are not,
 we will remove the `<your-buttons-container-element>` div to remove the edit and delete buttons from the user. The check is seen here:
 ```unless $('meta[name=admin]').length > 0 || $("meta[user=#{username}]").length > 0```
@@ -207,3 +207,5 @@ This is to allow the check by JS as seen inside the `checkMe` function to trim t
   ```
 
 - This is a simple switch that performs the appropriate function depending on what data.type is - which is send from `broadcast` in your comments job.
+
+- You will need to use `perform_now` instead of `perform_later` for `comments destroy` in your controller.
