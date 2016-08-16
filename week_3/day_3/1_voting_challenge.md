@@ -49,7 +49,7 @@
 
 - Create a new method called `total_votes` inside your `comment` model.
 
-- `votes` method makes 2 queries: it counts the number of `+1` votes and `-1` votes and tallies them. Check the `IMPORTANT` methods to use.
+- `votes` method makes 2 queries: it counts the number of `+1` votes and `-1` votes and tallies them
 
 - EXAMPLE:
   ```
