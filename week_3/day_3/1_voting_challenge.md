@@ -47,7 +47,7 @@
 
 - HINT: You can try using [this](http://apidock.com/rails/v4.0.2/ActiveRecord/Relation/find_or_create_by) method.
 
-- Create a new method called `votes` inside your `comment` model.
+- Create a new method called `total_votes` inside your `comment` model.
 
 - `votes` method makes 2 queries: it counts the number of `+1` votes and `-1` votes and tallies them. Check the `IMPORTANT` methods to use.
 
