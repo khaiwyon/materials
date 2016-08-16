@@ -12,7 +12,10 @@
 
 ### HINTS TO GET YOU STARTED:
 
-- Create a new model called `Vote`. It has 3 attributes - `value`, `user_id`, `comment_id`
+- Create a new model called `Vote`. It has 3 attributes:
+  - value:integer
+  - user_id:integer
+  - comment_id:integer
 
 - The associations are:
 
