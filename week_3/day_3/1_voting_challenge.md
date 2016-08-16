@@ -1,4 +1,4 @@
-# Day 5
+# Day 3
 
 ## The Voting Challenge
 
