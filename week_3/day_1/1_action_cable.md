@@ -55,7 +55,6 @@ important for applications such as chat
     postsChannelFunctions = () ->
 
     checkMe = (comment_id, username) ->
-
       unless $('meta[name=admin]').length > 0 || $("meta[user=#{username}]").length > 0
         $("<your-comment-element-name>[data-id=#{comment_id}] .<your-buttons-container-element>").remove()
       $("<your-comment-element-name>[data-id=#{comment_id}]").removeClass("hidden")
@@ -86,8 +85,16 @@ important for applications such as chat
 
 - `received(data)` is the callback with the parameter `data` when `rails broadcasts` a new `message` to the appropriate `channel`
 
-- NOTE: The partial rendered is by default hidden when it is rendered from the back-end (I will explain it clearly in a few moments).
+- The partial rendered is by default hidden when it is rendered from the back-end (I will explain it clearly in a few moments).
 
+- TO NOTE:
+  ```
+    checkMe = (comment_id, username) ->
+      unless $('meta[name=admin]').length > 0 || $("meta[user=#{username}]").length > 0
+        $("<your-comment-element-name>[data-id=#{comment_id}] .<your-buttons-container-element>").remove()
+      $("<your-comment-element-name>[data-id=#{comment_id}]").removeClass("hidden")
+  ```
+  
 - `checkMe` is a custom function we've added to check if the user that is logged in is an admin or the comment's owner or not - if they are not,
 we will remove the `<your-buttons-container-element>` div to remove the edit and delete buttons from the user. The check is seen here:
 ```unless $('meta[name=admin]').length > 0 || $("meta[user=#{username}]").length > 0```
