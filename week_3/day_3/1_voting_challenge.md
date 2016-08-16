@@ -12,7 +12,7 @@
 
 ### HINTS TO GET YOU STARTED:
 
-- Create a new model called `Vote`. It has 4 attributes - `value`, `user_id`, `comment_id`
+- Create a new model called `Vote`. It has 3 attributes - `value`, `user_id`, `comment_id`
 
 - The associations are:
 
@@ -34,9 +34,7 @@
 - Build a votes controller. Create 2 custom methods called `upvote` and `downvote`. Create 2 new `POST` routes called `/votes/upvote` and `/votes/downvote`. I'll help you with one:
 
   ```
-    namespace :votes do
-      post :upvote, to: 'votes#upvote'
-    end
+    post :upvote, to: 'votes#upvote'
   ```
 
 - Both method works like this:
