@@ -74,4 +74,7 @@
   - If a user has voted on this post or comment, it will highlight the button with another color.
   - The ability to un-vote. Currently if a user has vote, they can only change it with a `-1` or `thumbs down` vote or vice versa.
 
-- Tie this in with ActionCable and AJAX, if a user votes it would reflect on the views for others as well.
+- Tie this in with ActionCable and AJAX, if a user votes it would reflect on the views for others as well:
+  - create `upvote.js.erb` and `downvote.js.erb`
+  - create a new channel called `votes_channel` for both front and back-end
+  - when a user upvotes or downvotes, it will look for the `comment partial` and update the score.
