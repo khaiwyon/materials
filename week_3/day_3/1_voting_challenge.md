@@ -22,7 +22,7 @@
   ```
     class Vote < ApplicationRecord
       belongs_to :user
-      belongs_to :comments
+      belongs_to :comment
     end
 
     class Comment < ApplicationRecord
@@ -49,7 +49,7 @@
 
 - Create a new method called `total_votes` inside your `comment` model.
 
-- `votes` method makes 2 queries: it counts the number of `+1` votes and `-1` votes and tallies them
+- `votes` method makes 2 queries: it counts the number of `+1` votes and `-1` votes and tallies them.
 
 - EXAMPLE:
   ```
