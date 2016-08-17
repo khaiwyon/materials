@@ -25,4 +25,4 @@
 
 - calling `self` fetches the instance object that is calling this method. For example, `c = Comment.first` is an instance object of the `Comment` class.
 
-- If you pry the `full_name` method and typed in `c.full_name`. You can call the object `c` by typing self while pried inside `full_name` method.
+- If you pry the `full_name` method and typed in `c.full_name`. You can call the object `c` by typing self while pried inside `full_name` method.``
