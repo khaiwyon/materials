@@ -68,6 +68,9 @@
     c.total_votes
   ```
 
+- HINT: If you're wondering how to pass params from your views to your controller:
+  - You can try something like this `link_to ..... your_path(comment_id: <your-comment>.id)`
+
 - HOW TO GET YOUR TOTAL VOTES:
   - fetch the values of all your votes associated with the comment
   - tally the total of values
