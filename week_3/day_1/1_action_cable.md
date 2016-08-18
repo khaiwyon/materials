@@ -70,7 +70,7 @@ important for applications such as chat
         received: (data) ->
           if $('<your-comments-index-element>').data().id == data.post.id
             $('<your-comments-container>').append(data.partial)
-            checkMe(data.comment.id)
+            checkMe(data.comment.id, data.username)
 
     $(document).on 'turbolinks:load', postsChannelFunctions
   ```
