@@ -3,10 +3,10 @@
 ## Users Controller Spec
 
 ```
-  require 'rails_helper'
+require 'rails_helper'
 
-  RSpec.describe Users, type: :controller do
-  end
+RSpec.describe Users, type: :controller do
+end
 ```
 
 - Set up your controller as usual. We now have 4 controller actions to test - `new, create, edit, and update`. Each will have a different scenario as well. For example, we will have to test
@@ -17,14 +17,14 @@ the authorization of edit and update, as well as authentication (i.e - they shou
 - We'll start with the easiest - new (NOTE: IF YOU DID THE MODAL CHALLENGE LAST FRIDAY - YOU SHOULD SKIP THIS PART AS YOUR FORM HAS BEEN MOVED TO A MODAL)
 
 ```
-  describe "render new" do
-    it "should render new" do
+describe "render new" do
+  it "should render new" do
 
-      get :new
-      expect(subject).to render_template(:new)
-      expect(assigns[:user]).to be_present
-    end
+    get :new
+    expect(subject).to render_template(:new)
+    expect(assigns[:user]).to be_present
   end
+end
 ```
 
 - Fairly straightforward, with something new at the last line. `expect(assigns[:user]).to be_present` essentially checks to make sure that `@user = User.new` from your `users#new` is working.
@@ -36,25 +36,23 @@ the authorization of edit and update, as well as authentication (i.e - they shou
 - Next, we'll need to test `create`.
 
 ```
-  describe "create user" do
-    it "should create new user" do
+describe "create user" do
+  it "should create new user" do
 
-      params = { user: { email: "user@gmail.com", username: "thor", password: "password" } }
-      post :create, params: params
+    params = { user: { email: "user@gmail.com", username: "thor", password: "password" } }
+    post :create, params: params
 
-      user = User.find_by(email: "user@gmail.com")
+    user = User.find_by(email: "user@gmail.com")
 
-      expect(User.count).to eql(2)
-      expect(user.email).to eql("user@gmail.com")
-      expect(user.username).to eql("thor")
-      expect(flash[:success]).to eql("You're registered, welcome!")
-    end
+    expect(User.count).to eql(2)
+    expect(user.email).to eql("user@gmail.com")
+    expect(user.username).to eql("thor")
+    expect(flash[:success]).to eql("You're registered, welcome!")
   end
+end
 ```
 
 - I'll explain line by line:
-
-```
 
 - `params = { user: { email: "user@gmail.com", username: "thor", password: "password" } }` sets the params that we are planning to pass to the controller. Note that because of `strong_params`:- we need to wrap the appropriate data inside the name of the permitted parameter. In this case it's `user`, so we'll need to wrap `email`, `username`, and `password` inside it.
 
@@ -82,36 +80,36 @@ the authorization of edit and update, as well as authentication (i.e - they shou
 ### Edit
 
 ```
-  describe "edit user" do
+describe "edit user" do
 
-    it "should redirect if not logged in" do
+  it "should redirect if not logged in" do
 
-      params = { id: @user.id }
-      get :edit, params: params
+    params = { id: @user.id }
+    get :edit, params: params
 
-      expect(subject).to redirect_to(root_path)
-      expect(flash[:danger]).to eql("You need to login first")
-    end
-
-    it "should redirect if user unauthorized" do
-
-      params = { id: @user.id }
-      get :edit, params: params, session: { id: @user.id }
-
-      expect(subject).to redirect_to(root_path)
-      expect(flash[:danger]).to eql("You're not authorized")
-    end
-
-    it "should render edit" do
-
-      params = { id: @user.id }
-      get :edit, params: params, session: { id: @user.id }
-
-      current_user = subject.send(:current_user)
-      expect(subject).to render_template(:edit)
-      expect(current_user).to be_present
-    end
+    expect(subject).to redirect_to(root_path)
+    expect(flash[:danger]).to eql("You need to login first")
   end
+
+  it "should redirect if user unauthorized" do
+
+    params = { id: @user.id }
+    get :edit, params: params, session: { id: @user.id }
+
+    expect(subject).to redirect_to(root_path)
+    expect(flash[:danger]).to eql("You're not authorized")
+  end
+
+  it "should render edit" do
+
+    params = { id: @user.id }
+    get :edit, params: params, session: { id: @user.id }
+
+    current_user = subject.send(:current_user)
+    expect(subject).to render_template(:edit)
+    expect(current_user).to be_present
+  end
+end
 ```
 
 - We now have 3 scenarios for `edit user`. The first one checks to make sure that an unauthenticated user is not allowed to edit it, the second checks to see to make sure an unauthorized user cannot update another user's details, and the final one makes sure the proper user can.
@@ -128,37 +126,37 @@ the authorization of edit and update, as well as authentication (i.e - they shou
 - Finally, we have update:
 
 ```
-  describe "update user" do
+describe "update user" do
 
-    it "should redirect if not logged in" do
-      params = { id: @user.id, user: { email: "new@email.com", username: "newusername" } }
-      patch :update, params: params
+  it "should redirect if not logged in" do
+    params = { id: @user.id, user: { email: "new@email.com", username: "newusername" } }
+    patch :update, params: params
 
-      expect(subject).to redirect_to(root_path)
-      expect(flash[:danger]).to eql("You need to login first")
-    end
-
-    it "should redirect if user unauthorized" do
-      params = { id: @user.id, user: { email: "new@email.com", username: "newusername" } }
-      patch :update, params: params, session: { id: @invader.id }
-
-      expect(subject).to redirect_to(root_path)
-      expect(flash[:danger]).to eql("You're not authorized")
-    end
-
-    it "should update user" do
-
-      params = { id: @user.id, user: { email: "new@email.com", username: "newusername", password: "newpassword" } }
-      patch :update, params: params, session: { id: @user.id }
-
-      @user.reload
-      current_user = subject.send(:current_user).reload
-
-      expect(current_user.email).to eql("new@email.com")
-      expect(current_user.username).to eql("newusername")
-      expect(current_user.authenticate("newpassword")).to eql(@user)
-    end
+    expect(subject).to redirect_to(root_path)
+    expect(flash[:danger]).to eql("You need to login first")
   end
+
+  it "should redirect if user unauthorized" do
+    params = { id: @user.id, user: { email: "new@email.com", username: "newusername" } }
+    patch :update, params: params, session: { id: @invader.id }
+
+    expect(subject).to redirect_to(root_path)
+    expect(flash[:danger]).to eql("You're not authorized")
+  end
+
+  it "should update user" do
+
+    params = { id: @user.id, user: { email: "new@email.com", username: "newusername", password: "newpassword" } }
+    patch :update, params: params, session: { id: @user.id }
+
+    @user.reload
+    current_user = subject.send(:current_user).reload
+
+    expect(current_user.email).to eql("new@email.com")
+    expect(current_user.username).to eql("newusername")
+    expect(current_user.authenticate("newpassword")).to eql(@user)
+  end
+end
 ```
 
 - This is fairly similar to `edit` and `create`; but note the final scenario. Here we needed to `reload` both `@user` and `current_user` because the data inside the database has been updated to the new values but the `objects - @user and current_user` are still cached with the older one. Hence, we needed to run `reload` on the both of them to make sure they reflect the latest data.
