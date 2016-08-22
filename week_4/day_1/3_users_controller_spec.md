@@ -5,7 +5,7 @@
 ```
 require 'rails_helper'
 
-RSpec.describe Users, type: :controller do
+RSpec.describe UsersController, type: :controller do
 end
 ```
 
