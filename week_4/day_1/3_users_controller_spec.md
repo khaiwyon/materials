@@ -61,7 +61,7 @@ describe "create user" do
     expect(User.count).to eql(3)
     expect(user.email).to eql("user@gmail.com")
     expect(user.username).to eql("thor")
-    expect(flash[:success]).to eql("You're registered, welcome!")
+    expect(flash[:success]).to eql("<your-flash-message>")
   end
 end
 ```
@@ -80,7 +80,7 @@ end
   expect(User.count).to eql(3)
   expect(user.email).to eql("user@gmail.com")
   expect(user.username).to eql("thor")
-  expect(flash[:success]).to eql("You're registered, welcome!")
+  expect(flash[:success]).to eql("<your-flash-message>")
 ```
 
 - The first checks that the number of records in your `User` model has increased by 1 to a total of 3 (remember the two initially created in `before(:all)`).
@@ -102,7 +102,7 @@ describe "edit user" do
     get :edit, params: params
 
     expect(subject).to redirect_to(root_path)
-    expect(flash[:danger]).to eql("You need to login first")
+    expect(flash[:danger]).to eql("<your-flash-message>")
   end
 
   it "should redirect if user unauthorized" do
@@ -111,7 +111,7 @@ describe "edit user" do
     get :edit, params: params, session: { id: @unauthorized_user.id }
 
     expect(subject).to redirect_to(root_path)
-    expect(flash[:danger]).to eql("You're not authorized")
+    expect(flash[:danger]).to eql("<your-flash-message>")
   end
 
   it "should render edit" do
@@ -147,7 +147,7 @@ describe "update user" do
     patch :update, params: params
 
     expect(subject).to redirect_to(root_path)
-    expect(flash[:danger]).to eql("You need to login first")
+    expect(flash[:danger]).to eql("<your-flash-message>")
   end
 
   it "should redirect if user unauthorized" do
@@ -155,7 +155,7 @@ describe "update user" do
     patch :update, params: params, session: { id: @unauthorized_user.id }
 
     expect(subject).to redirect_to(root_path)
-    expect(flash[:danger]).to eql("You're not authorized")
+    expect(flash[:danger]).to eql("<your-flash-message>")
   end
 
   it "should update user" do
