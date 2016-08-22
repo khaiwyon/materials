@@ -12,6 +12,20 @@ end
 - Set up your controller as usual. We now have 4 controller actions to test - `new, create, edit, and update`. Each will have a different scenario as well. For example, we will have to test
 the authorization of edit and update, as well as authentication (i.e - they should be redirected to the landing page if they're not logged in)
 
+### Setting up a the proper model objects
+
+- We're now going to set up 2 user records for this test that we will use for this test suite. To do this, we're going to use a `before(:all)` block. This makes any record created here available to all test cases later so we do not have to recreate them again and again for every test case.
+
+- Add the following code:
+  ```
+    before(:all) do
+      @user = User.create(<define-your-user-params-here>)
+      @unauthorized_user = User.create(<define-your-user-params-here>)
+    end
+  ```
+
+- Now we will have `@user` and `@unauthorized_user` available to this test suite.
+
 ### New
 
 - We'll start with the easiest - new (NOTE: IF YOU DID THE MODAL CHALLENGE LAST FRIDAY - YOU SHOULD SKIP THIS PART AS YOUR FORM HAS BEEN MOVED TO A MODAL)
@@ -44,7 +58,7 @@ describe "create user" do
 
     user = User.find_by(email: "user@gmail.com")
 
-    expect(User.count).to eql(2)
+    expect(User.count).to eql(3)
     expect(user.email).to eql("user@gmail.com")
     expect(user.username).to eql("thor")
     expect(flash[:success]).to eql("You're registered, welcome!")
@@ -63,13 +77,13 @@ end
 - We'll need set a series of `expectations` that the user is properly registered into the database.
 
 ```
-  expect(User.count).to eql(1)
+  expect(User.count).to eql(3)
   expect(user.email).to eql("user@gmail.com")
   expect(user.username).to eql("thor")
   expect(flash[:success]).to eql("You're registered, welcome!")
 ```
 
-- The first checks that the number of records in your `User` model has increased by 1 to a total of 1.
+- The first checks that the number of records in your `User` model has increased by 1 to a total of 3 (remember the two initially created in `before(:all)`).
 
 - The second checks that the `user` record we fetched is the same as the one we sent in via `params`.
 
@@ -94,7 +108,7 @@ describe "edit user" do
   it "should redirect if user unauthorized" do
 
     params = { id: @user.id }
-    get :edit, params: params, session: { id: @user.id }
+    get :edit, params: params, session: { id: @unauthorized_user.id }
 
     expect(subject).to redirect_to(root_path)
     expect(flash[:danger]).to eql("You're not authorized")
@@ -138,7 +152,7 @@ describe "update user" do
 
   it "should redirect if user unauthorized" do
     params = { id: @user.id, user: { email: "new@email.com", username: "newusername" } }
-    patch :update, params: params, session: { id: @invader.id }
+    patch :update, params: params, session: { id: @unauthorized_user.id }
 
     expect(subject).to redirect_to(root_path)
     expect(flash[:danger]).to eql("You're not authorized")
