@@ -65,7 +65,9 @@
 
 - For example, the `trait :with_image` adds an image when creating a new user as well.
 
-- `fixture_file_upload` is a method for used for uploading files (in this case our user's profile image) for testing. `"#{::Rails.root}/spec/fixtures.cat.jpg"` is the `url` of the image we've stored it for usage. In thise case, I have `cat.jpg` saved inside the folder `spec/fixtures`. `"#{::Rails.root}"` is the method to fetch the root folder of your rails application.
+- `fixture_file_upload` is a method for used for uploading files (in this case our user's profile image) for testing. `"#{::Rails.root}/spec/fixtures.cat.jpg"` is the `url` of the image we've stored it for usage. In this case, I have `cat.jpg` saved inside the folder `spec/fixtures`. `"#{::Rails.root}"` is the method to fetch the root folder of your rails application.
+
+- Create a new folder called `fixtures` inside `spec` folder and add a nice image of your choice.
 
 - `sequence(:email)` is great when you want to create multiple users. How it works is that you call the method `sequence` and pass in the name of the attribute (in this case it's the user's email) as an argument and a proc (`{}`).
 
