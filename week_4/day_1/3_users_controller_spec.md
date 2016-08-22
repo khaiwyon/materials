@@ -187,3 +187,5 @@ end
     - What happens if the user is not logged in
     - What happens if the user is not authorized
     - What happens if the user has all the right credentials
+  - HINT: If you are creating an ajax action, you will need to pass in `xhr: true` to your action as well:
+    - For example: `post :create, xhr: true`
