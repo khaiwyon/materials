@@ -92,6 +92,6 @@ tend to break or run into errors less, have better designs, and are more pleasan
 
 - The code inside `config.after(:all)` block essentially cleans the database after each suite to keep it clean and fresh. Similarly `FileUtils.rm_rf` removes any file (in the case of this project - images) uploaded to the `public/uploads/test` folder - as determined by your `ImageUploader` file (`"uploads/test/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"`)
 
-- Finally, let's run `rails:db:test` to prepare our test database.
+- Finally, let's run `rails db:test:prepare` to prepare our test database.
 
 - Now you're all set up to write your first test.
