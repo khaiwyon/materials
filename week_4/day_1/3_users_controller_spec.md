@@ -182,7 +182,7 @@ end
 ### Challenge
 
 - Once you have finished, using what you've learnt here:
-  - Complete the controller tests for `Topics`, `Posts`, and `Comments`
+  - Complete the controller tests for `Topics`, `Posts`, `Comments`, and `Votes`
   - Make sure to cover at least the following scenarios:
     - What happens if the user is not logged in
     - What happens if the user is not authorized
