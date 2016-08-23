@@ -1,5 +1,37 @@
 # Day 3
 
+## Setting up
+
+- In your `rails_helper.rb` file, add the following:
+
+- Below:
+```
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
+# Prevent database truncation if the environment is production
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+require 'spec_helper'
+require 'rspec/rails'
+require 'shoulda/matchers'
+require 'capybara/rails'
+```
+
+- ADD:
+```
+Dir["./spec/support/generators/*"].each {|file| require file }
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+
+    with.library :active_record
+    with.library :active_model
+    with.library :action_controller
+    with.library :rails
+  end
+end
+```
+
 ## Model Tests
 
 - Models are another important part of the application that we need to test. Here, we mostly test validations and any other important model methods that we have built.
