@@ -92,49 +92,9 @@ RSpec.feature "User adds new comment and deletes it", type: :feature, js: true d
 
   scenario "User adds, edits, upvotes, downvotes, and delete comment" do
     visit("http://localhost:3000")
-
-    click_link("Login")
-
-    fill_in 'Email', with: "eldrethlim@gmail.com"
-    fill_in 'Password', with: "newpassword"
-    click_button("Log me in!")
-
-    click_link("topics-index")
-    click_link("Programming")
-    click_link("Rails")
-
-    fill_in "Body", with: "This is a new comment"
-    click_button("Comment")
-    expect(page).to have_content("This is a new comment")
-
-    click_button("close-flash")
-
-    click_link("Edit Comment")
-    edit_form_body = find("#comment-edit-form #comment_text_field").set("This is an edited comment")
-    click_button("Update")
-    expect(page).to have_content("This is an edited comment")
-
-    click_button("close-flash")
-
-    click_link("Upvote")
-    expect(find(".voting-score")).to have_content("1")
-
-    click_button("close-flash")
-
-    click_link("Downvote")
-    expect(find(".voting-score")).to have_content("-1")
-
-    click_button("close-flash")
-
-    click_link("Delete Comment")
-    # accepts alert
-    page.driver.browser.switch_to.alert.accept
-    expect(page).to_not have_content("This is an edited comment")
   end
-end
 ```
 
-- Try and understand the source codes and build it play by play:
-  - NOTE THAT THE STARTING POINT IS YOU VISITING `http://localhost:3000`
+- NOTE THAT THE STARTING POINT IS YOU VISITING `http://localhost:3000`
 
 - NOTE: use `js: true` if you need to test certain `js` functions in your app. For example, `modals`.
