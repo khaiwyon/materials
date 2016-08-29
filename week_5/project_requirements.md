@@ -9,3 +9,4 @@
   - Users can log in via email/password or through Facebook.
   - Users can make payments through braintree, a credit card payment provider, or billplz.
   - Users can search for items using keywords.
+  - Admin users can update orders as delivered, or add new items to the store using an admin panel.
