@@ -3,7 +3,7 @@
 - [HAML](https://github.com/k0kubun/hamlit)
 - [SLIM](https://github.com/slim-template/slim)
 
-- They essential turn your html like these:
+- They essentially turn your html like these:
 
 ```
 <div class="landing index">
