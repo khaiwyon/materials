@@ -55,3 +55,5 @@ end
 - In your views, create a simple form that sends 2 parameters to your carts controller, the item id and the item quantity.
 
 - Use hash [delete](https://ruby-doc.org/core-1.9.3/Hash.html#method-i-delete) to delete key / value pairs from your hash.
+
+- Be sure to encrypt and sign your cookies (refer to `shopping cart and cookies`)
