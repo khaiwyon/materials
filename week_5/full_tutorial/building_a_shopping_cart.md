@@ -57,3 +57,5 @@ end
 - Use hash [delete](https://ruby-doc.org/core-1.9.3/Hash.html#method-i-delete) to delete key / value pairs from your hash.
 
 - Be sure to encrypt and sign your cookies (refer to `shopping cart and cookies`)
+
+- Read about `define_singleton_method` [here](http://apidock.com/ruby/Object/define_singleton_method)
