@@ -59,6 +59,3 @@ end
 - Be sure to encrypt and sign your cookies (refer to `shopping cart and cookies`)
 
 - Read about `define_singleton_method` [here](http://apidock.com/ruby/Object/define_singleton_method)
-
-- BE AWARE THAT THIS IS NOT FULL TUTORIAL, there are missing elements such as:
-  - Quantities are overridden if you try to add the same item into the hash, try adding a check that adds the quantity instead of overriding it.
