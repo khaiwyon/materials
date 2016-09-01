@@ -12,6 +12,7 @@ class CartsController < ApplicationController
     items.each do |k,v|
       # your k is your item id
       # your v is your quantity
+      # you can also rename k to item_id, and v to quantity for clarity
       # search for your item
       item = Item.find_by(id: k)
 
