@@ -1,0 +1,38 @@
+# Building a shopping cart
+
+- Building a shopping cart is all about manipulating your cookies.
+
+```
+class CartsController < ApplicationController
+
+  def add_item
+    if !cookies[:cart] #checks if an existing cart exists
+      items = { params[:id] => params[:quantity] }
+    else
+      items = JSON.parse(cookies[:cart])
+      items[params[:id]] = params[:quantity]
+    end
+
+    cookies[:cart] = JSON.generate(items)
+  end
+
+  def update_item
+  end
+
+  def remove_item
+    // Use delete
+  end
+
+  def show
+  end
+end
+
+- Your routes:
+
+# get :cart, to: "carts#show"
+# post :add_item, to: "carts#add_item"
+# post :remove_item, to: "carts#remove_item"
+
+- In your views, create a simple form that sends 2 parameters to your carts controller, the item id and the item quantity.
+
+- Use hash [delete](https://ruby-doc.org/core-1.9.3/Hash.html#method-i-delete) to delete key / value pairs from your hash.
