@@ -17,7 +17,7 @@ class CartsController < ApplicationController
       item = Item.find_by(id: k)
 
       # creates a new method and assigns the quantity to it
-      def item.quantity
+      item.define_singleton_method(:quantity) do
         v
       end
       @items << item
