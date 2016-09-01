@@ -11,7 +11,7 @@ class CartsController < ApplicationController
     @items = []
     items.each do |k,v|
       # search for your item
-      item = Item.find_by(id: params[:id])
+      item = Item.find_by(id: k)
 
       # creates a new method and assigns the quantity to it
       def item.quantity
