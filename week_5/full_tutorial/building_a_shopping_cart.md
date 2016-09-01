@@ -5,6 +5,22 @@
 ```
 class CartsController < ApplicationController
 
+  def show
+    items = JSON.parse(cookies[:cart])
+
+    @items = []
+    items.each do |k,v|
+      # search for your item
+      item = Item.find_by(id: params[:id])
+
+      # creates a new method and assigns the quantity to it
+      def item.quantity
+        v
+      end
+      @items << item
+    end
+  end
+
   def add_item
     if !cookies[:cart] #checks if an existing cart exists
       items = { params[:id] => params[:quantity] }
