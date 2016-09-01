@@ -31,3 +31,11 @@
 - cart_items = JSON.parse(cookies[:cart])
 
 - Find out how to read hashes [here](http://docs.ruby-lang.org/en/2.0.0/Hash.html)
+
+- To read your hash, you can try using the each block. EG:
+  ```
+  items.each do |key, value|
+    puts key
+    puts value
+  end
+  ```
