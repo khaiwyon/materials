@@ -77,6 +77,16 @@
 
   ![checkout form](images/checkout_form.png)
 
+- Here, we're using rails `form_for` generator to create a new form. Inside it, we've created a `#dropin-container` to let paypal know that this is the element we want to render our form in.
+
+- What braintree does is that it embeds a form inside `#dropin-container`. The `function` for this is actually imported from `js.braintreegateway/....` that you included in your application html.
+
+- It also overrides your form `submit` to first send the transaction details to its server before you post your form to your controller (remember `url: orders_path`).
+
+- Trivia: This is how malicious JS works as well. Hackers can inject malicious javascript into your browser and take over your machine using the same principle. (This is why if you inspect Facebook's website it'll warn you not to paste anything into the console.)
+
+  ![Stahp](images/stahp.png)
+
 ---
 
 - We'll now create the `create` action for your controller.
