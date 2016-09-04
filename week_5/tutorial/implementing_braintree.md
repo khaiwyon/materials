@@ -103,7 +103,7 @@
 
 - The flow works like this:
   - You generate a new form using a token fetch from braintree's server.
-  - Once the customer keys in his credit card details, a secure transaction is sent again
+  - Once the customer keys in their credit card details, a secure transaction is sent again
   to Braintree's server to handle the credit card processing.
   - You received a callback called `payment_method_nonce` in your controller (defined by your `form_for url`) that you can use now to create a new transaction with your account. (NOTE: The payment isn't actually made during the js form, it is just a validation process for the credit card).
   - `Braintree::Transaction.sale` is the method actually handling the transaction.
