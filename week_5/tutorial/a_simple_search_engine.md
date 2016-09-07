@@ -30,3 +30,5 @@
   ![ajax](images/ajax.png)
 
 - Finally, you can also set form to fire as an `ajax`. Refer to your materials from the first project.
+
+- Try out the various methods available in the gem as well to refine your search, this is a very basic example.
