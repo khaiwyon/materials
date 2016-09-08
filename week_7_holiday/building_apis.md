@@ -1,6 +1,6 @@
 # Building APIs
 
-- The Rails framework allows developers to quickly craft APIs that other apps or servers interact with. The design of creating these APIs are very similar to building a regular APP. All API endpoints interact with controllers.
+- The Rails framework allows developers to quickly craft APIs that other apps or servers interact with. The design of creating these APIs are very similar to building a regular APP. All API endpoints interact with `controllers`.
 
 - The only difference is that instead of rendering HTML templates, you will need to render in [JSON](https://en.wikipedia.org/wiki/JSON) format.
 
@@ -39,3 +39,6 @@
   ```
 
 - Finish up this serializer based on the requirements of the project.
+
+- HINT:
+  - You should create your api folders inside `controllers/API` folder. You will then need to nest it as well based on the folder name. In this case, since the folder is called `API`, you would name it `API::LandingController`.
