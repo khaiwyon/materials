@@ -10,6 +10,10 @@
 
 - This method is then called by `current_api_user` to be used by the `AuthTokenService`(refer to JSON Web Token section) to fetch the user id.
 
+- [protect_from_forgery](http://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html) is a security measure that is set to `null_session` for API calls because we need it to accept external requests.
+
+- Similarly, we will also skip `verify_authenticity_token` if the incoming request is in `json` format - as seen at the bottom - the method `json_request?` 
+
 - Finally, we also have a `rescue_from` set in the event that a current_api_
 user is not fetched. This is a simple error prompt that the user is not logged in.
 
