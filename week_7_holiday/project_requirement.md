@@ -42,5 +42,10 @@
     - Authenticated Users sends an ['Authorization'] header to the server.
     - response: { task: task (attributes: id, description, complete), meta: { message: "message" } }
 
+  - Delete task:
+    - DELETE /api/v1/tasks/:id
+    - Authenticated Users sends an ['Authorization'] header to the server.
+    - response: { task: task (attributes: id, description, complete), meta: { message: "message" } }
+
   - Logout user:
     - Done from the client by deleting the user token, server does not need to do anything. (You don't need to do anything here.)
