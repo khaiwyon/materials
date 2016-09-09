@@ -1,3 +1,22 @@
+# Setting Up
+
+- We'll need to set up to allow [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+
+- Install this [gem](https://github.com/cyu/rack-cors).
+
+- Create a new initializer file called `rack_cors.rb`.
+
+  ```
+  Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+      resource '*', headers: :any, methods: [:get, :put, :delete, :post, :options]
+    end
+  end
+  ```
+
+- This will be enough for your project, what this does is that we'll allow anyone to access our api. Actual production apps may require certain credentials, but we'll leave that for now.
+
 # Building APIs
 
 - The Rails framework allows developers to quickly craft APIs that other apps or servers interact with. The design of creating these APIs are very similar to building a regular APP. All API endpoints interact with `controllers`.
